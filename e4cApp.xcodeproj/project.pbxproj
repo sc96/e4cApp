@@ -8,22 +8,78 @@
 
 /* Begin PBXBuildFile section */
 		2221676B1E973BDB0031FCB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2221676A1E973BDB0031FCB9 /* AppDelegate.swift */; };
-		2221676D1E973BDB0031FCB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2221676C1E973BDB0031FCB9 /* ViewController.swift */; };
-		222167701E973BDB0031FCB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2221676E1E973BDB0031FCB9 /* Main.storyboard */; };
 		222167731E973BDB0031FCB9 /* e4cApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222167711E973BDB0031FCB9 /* e4cApp.xcdatamodeld */; };
 		222167751E973BDB0031FCB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222167741E973BDB0031FCB9 /* Assets.xcassets */; };
 		222167781E973BDB0031FCB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222167761E973BDB0031FCB9 /* LaunchScreen.storyboard */; };
+		222167D61E9740D70031FCB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222167BF1E9740D70031FCB9 /* Assets.xcassets */; };
+		222167D71E9740D70031FCB9 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 222167C01E9740D70031FCB9 /* Base.lproj */; };
+		222167D91E9740D70031FCB9 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167C21E9740D70031FCB9 /* CommunityViewController.swift */; };
+		222167DA1E9740D70031FCB9 /* CommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167C31E9740D70031FCB9 /* CommunityViewController.xib */; };
+		222167DB1E9740D70031FCB9 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167C41E9740D70031FCB9 /* CustomTabBarViewController.swift */; };
+		222167DC1E9740D70031FCB9 /* CustomTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167C51E9740D70031FCB9 /* CustomTabBarViewController.xib */; };
+		222167DD1E9740D70031FCB9 /* e4cApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222167C61E9740D70031FCB9 /* e4cApp.xcdatamodeld */; };
+		222167DE1E9740D70031FCB9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167C81E9740D70031FCB9 /* HomeViewController.swift */; };
+		222167DF1E9740D70031FCB9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167C91E9740D70031FCB9 /* HomeViewController.xib */; };
+		222167E01E9740D70031FCB9 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 222167CA1E9740D70031FCB9 /* Images */; };
+		222167E21E9740D70031FCB9 /* NewsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167CC1E9740D70031FCB9 /* NewsPageViewController.swift */; };
+		222167E31E9740D70031FCB9 /* NewsPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167CD1E9740D70031FCB9 /* NewsPageViewController.xib */; };
+		222167E41E9740D70031FCB9 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167CE1E9740D70031FCB9 /* NewsViewController.swift */; };
+		222167E51E9740D70031FCB9 /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167CF1E9740D70031FCB9 /* NewsViewController.xib */; };
+		222167E61E9740D70031FCB9 /* WebinarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167D01E9740D70031FCB9 /* WebinarPageViewController.swift */; };
+		222167E71E9740D70031FCB9 /* WebinarPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167D11E9740D70031FCB9 /* WebinarPageViewController.xib */; };
+		222167E81E9740D70031FCB9 /* WebinarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167D21E9740D70031FCB9 /* WebinarViewController.swift */; };
+		222167E91E9740D70031FCB9 /* WebinarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167D31E9740D70031FCB9 /* WebinarViewController.xib */; };
+		222167EA1E9740D70031FCB9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167D41E9740D70031FCB9 /* WelcomeViewController.swift */; };
+		222167EB1E9740D70031FCB9 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167D51E9740D70031FCB9 /* WelcomeViewController.xib */; };
+		222167ED1E9741600031FCB9 /* Webinar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167EC1E9741600031FCB9 /* Webinar.swift */; };
+		222167EF1E9741630031FCB9 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167EE1E9741630031FCB9 /* Article.swift */; };
+		222167F71E9741BE0031FCB9 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167F11E9741BE0031FCB9 /* ArticleTableViewCell.swift */; };
+		222167F81E9741BE0031FCB9 /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167F21E9741BE0031FCB9 /* ArticleTableViewCell.xib */; };
+		222167F91E9741BE0031FCB9 /* HotTopicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167F31E9741BE0031FCB9 /* HotTopicsCollectionViewCell.swift */; };
+		222167FA1E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167F41E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib */; };
+		222167FB1E9741BE0031FCB9 /* WebinarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167F51E9741BE0031FCB9 /* WebinarTableViewCell.swift */; };
+		222167FC1E9741BE0031FCB9 /* WebinarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167F61E9741BE0031FCB9 /* WebinarTableViewCell.xib */; };
+		7E6AB8D5BF70BD1AB414681B /* Pods_e4cApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BFD0868FB5E3E39A8497EE /* Pods_e4cApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05BFD0868FB5E3E39A8497EE /* Pods_e4cApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_e4cApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B8360FB2F44633806ABE358 /* Pods-e4cApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-e4cApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-e4cApp/Pods-e4cApp.release.xcconfig"; sourceTree = "<group>"; };
 		222167671E973BDB0031FCB9 /* e4cApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = e4cApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2221676A1E973BDB0031FCB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2221676C1E973BDB0031FCB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2221676F1E973BDB0031FCB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		222167721E973BDB0031FCB9 /* e4cApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = e4cApp.xcdatamodel; sourceTree = "<group>"; };
 		222167741E973BDB0031FCB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		222167771E973BDB0031FCB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		222167791E973BDB0031FCB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		222167BF1E9740D70031FCB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		222167C01E9740D70031FCB9 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
+		222167C21E9740D70031FCB9 /* CommunityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		222167C31E9740D70031FCB9 /* CommunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityViewController.xib; sourceTree = "<group>"; };
+		222167C41E9740D70031FCB9 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		222167C51E9740D70031FCB9 /* CustomTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTabBarViewController.xib; sourceTree = "<group>"; };
+		222167C71E9740D70031FCB9 /* e4cApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = e4cApp.xcdatamodel; sourceTree = "<group>"; };
+		222167C81E9740D70031FCB9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		222167C91E9740D70031FCB9 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		222167CA1E9740D70031FCB9 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		222167CC1E9740D70031FCB9 /* NewsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPageViewController.swift; sourceTree = "<group>"; };
+		222167CD1E9740D70031FCB9 /* NewsPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsPageViewController.xib; sourceTree = "<group>"; };
+		222167CE1E9740D70031FCB9 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		222167CF1E9740D70031FCB9 /* NewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
+		222167D01E9740D70031FCB9 /* WebinarPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebinarPageViewController.swift; sourceTree = "<group>"; };
+		222167D11E9740D70031FCB9 /* WebinarPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebinarPageViewController.xib; sourceTree = "<group>"; };
+		222167D21E9740D70031FCB9 /* WebinarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebinarViewController.swift; sourceTree = "<group>"; };
+		222167D31E9740D70031FCB9 /* WebinarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebinarViewController.xib; sourceTree = "<group>"; };
+		222167D41E9740D70031FCB9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		222167D51E9740D70031FCB9 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		222167EC1E9741600031FCB9 /* Webinar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Webinar.swift; path = Models/Webinar.swift; sourceTree = "<group>"; };
+		222167EE1E9741630031FCB9 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Article.swift; path = Models/Article.swift; sourceTree = "<group>"; };
+		222167F11E9741BE0031FCB9 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleTableViewCell.swift; path = Cells/ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		222167F21E9741BE0031FCB9 /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ArticleTableViewCell.xib; path = Cells/ArticleTableViewCell.xib; sourceTree = "<group>"; };
+		222167F31E9741BE0031FCB9 /* HotTopicsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotTopicsCollectionViewCell.swift; path = Cells/HotTopicsCollectionViewCell.swift; sourceTree = "<group>"; };
+		222167F41E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotTopicsCollectionViewCell.xib; path = Cells/HotTopicsCollectionViewCell.xib; sourceTree = "<group>"; };
+		222167F51E9741BE0031FCB9 /* WebinarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebinarTableViewCell.swift; path = Cells/WebinarTableViewCell.swift; sourceTree = "<group>"; };
+		222167F61E9741BE0031FCB9 /* WebinarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebinarTableViewCell.xib; path = Cells/WebinarTableViewCell.xib; sourceTree = "<group>"; };
+		55094112BF78C5B5AA78CFE1 /* Pods-e4cApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-e4cApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-e4cApp/Pods-e4cApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E6AB8D5BF70BD1AB414681B /* Pods_e4cApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +99,8 @@
 			children = (
 				222167691E973BDB0031FCB9 /* e4cApp */,
 				222167681E973BDB0031FCB9 /* Products */,
+				E9EBAD78F9368222B4F54AF7 /* Pods */,
+				425D11ECCA8ADCB49EA66717 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +116,73 @@
 			isa = PBXGroup;
 			children = (
 				2221676A1E973BDB0031FCB9 /* AppDelegate.swift */,
-				2221676C1E973BDB0031FCB9 /* ViewController.swift */,
-				2221676E1E973BDB0031FCB9 /* Main.storyboard */,
+				222167BF1E9740D70031FCB9 /* Assets.xcassets */,
+				222167C01E9740D70031FCB9 /* Base.lproj */,
+				222167FD1E9741C60031FCB9 /* Cells */,
+				222167C21E9740D70031FCB9 /* CommunityViewController.swift */,
+				222167C31E9740D70031FCB9 /* CommunityViewController.xib */,
+				222167C41E9740D70031FCB9 /* CustomTabBarViewController.swift */,
+				222167C51E9740D70031FCB9 /* CustomTabBarViewController.xib */,
+				222167C61E9740D70031FCB9 /* e4cApp.xcdatamodeld */,
+				222167C81E9740D70031FCB9 /* HomeViewController.swift */,
+				222167C91E9740D70031FCB9 /* HomeViewController.xib */,
+				222167CA1E9740D70031FCB9 /* Images */,
+				222167F01E9741A80031FCB9 /* Models */,
+				222167CC1E9740D70031FCB9 /* NewsPageViewController.swift */,
+				222167CD1E9740D70031FCB9 /* NewsPageViewController.xib */,
+				222167CE1E9740D70031FCB9 /* NewsViewController.swift */,
+				222167CF1E9740D70031FCB9 /* NewsViewController.xib */,
+				222167D01E9740D70031FCB9 /* WebinarPageViewController.swift */,
+				222167D11E9740D70031FCB9 /* WebinarPageViewController.xib */,
+				222167D21E9740D70031FCB9 /* WebinarViewController.swift */,
+				222167D31E9740D70031FCB9 /* WebinarViewController.xib */,
+				222167D41E9740D70031FCB9 /* WelcomeViewController.swift */,
+				222167D51E9740D70031FCB9 /* WelcomeViewController.xib */,
 				222167741E973BDB0031FCB9 /* Assets.xcassets */,
 				222167761E973BDB0031FCB9 /* LaunchScreen.storyboard */,
 				222167791E973BDB0031FCB9 /* Info.plist */,
 				222167711E973BDB0031FCB9 /* e4cApp.xcdatamodeld */,
 			);
 			path = e4cApp;
+			sourceTree = "<group>";
+		};
+		222167F01E9741A80031FCB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				222167EE1E9741630031FCB9 /* Article.swift */,
+				222167EC1E9741600031FCB9 /* Webinar.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		222167FD1E9741C60031FCB9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				222167F11E9741BE0031FCB9 /* ArticleTableViewCell.swift */,
+				222167F21E9741BE0031FCB9 /* ArticleTableViewCell.xib */,
+				222167F31E9741BE0031FCB9 /* HotTopicsCollectionViewCell.swift */,
+				222167F41E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib */,
+				222167F51E9741BE0031FCB9 /* WebinarTableViewCell.swift */,
+				222167F61E9741BE0031FCB9 /* WebinarTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		425D11ECCA8ADCB49EA66717 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05BFD0868FB5E3E39A8497EE /* Pods_e4cApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E9EBAD78F9368222B4F54AF7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				55094112BF78C5B5AA78CFE1 /* Pods-e4cApp.debug.xcconfig */,
+				0B8360FB2F44633806ABE358 /* Pods-e4cApp.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2221677C1E973BDB0031FCB9 /* Build configuration list for PBXNativeTarget "e4cApp" */;
 			buildPhases = (
+				1497151ACE31465DB4BB6F92 /* [CP] Check Pods Manifest.lock */,
 				222167631E973BDB0031FCB9 /* Sources */,
 				222167641E973BDB0031FCB9 /* Frameworks */,
 				222167651E973BDB0031FCB9 /* Resources */,
+				43FCCF09F8CDC7109852E99E /* [CP] Embed Pods Frameworks */,
+				424D62119479BDCA38E5D94A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,36 +247,102 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222167E01E9740D70031FCB9 /* Images in Resources */,
+				222167D71E9740D70031FCB9 /* Base.lproj in Resources */,
+				222167E71E9740D70031FCB9 /* WebinarPageViewController.xib in Resources */,
+				222167FA1E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib in Resources */,
 				222167781E973BDB0031FCB9 /* LaunchScreen.storyboard in Resources */,
 				222167751E973BDB0031FCB9 /* Assets.xcassets in Resources */,
-				222167701E973BDB0031FCB9 /* Main.storyboard in Resources */,
+				222167E91E9740D70031FCB9 /* WebinarViewController.xib in Resources */,
+				222167DA1E9740D70031FCB9 /* CommunityViewController.xib in Resources */,
+				222167EB1E9740D70031FCB9 /* WelcomeViewController.xib in Resources */,
+				222167D61E9740D70031FCB9 /* Assets.xcassets in Resources */,
+				222167F81E9741BE0031FCB9 /* ArticleTableViewCell.xib in Resources */,
+				222167E31E9740D70031FCB9 /* NewsPageViewController.xib in Resources */,
+				222167DC1E9740D70031FCB9 /* CustomTabBarViewController.xib in Resources */,
+				222167DF1E9740D70031FCB9 /* HomeViewController.xib in Resources */,
+				222167E51E9740D70031FCB9 /* NewsViewController.xib in Resources */,
+				222167FC1E9741BE0031FCB9 /* WebinarTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1497151ACE31465DB4BB6F92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		424D62119479BDCA38E5D94A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-e4cApp/Pods-e4cApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43FCCF09F8CDC7109852E99E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-e4cApp/Pods-e4cApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		222167631E973BDB0031FCB9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2221676D1E973BDB0031FCB9 /* ViewController.swift in Sources */,
+				222167FB1E9741BE0031FCB9 /* WebinarTableViewCell.swift in Sources */,
+				222167EF1E9741630031FCB9 /* Article.swift in Sources */,
+				222167F91E9741BE0031FCB9 /* HotTopicsCollectionViewCell.swift in Sources */,
+				222167DE1E9740D70031FCB9 /* HomeViewController.swift in Sources */,
 				222167731E973BDB0031FCB9 /* e4cApp.xcdatamodeld in Sources */,
+				222167DB1E9740D70031FCB9 /* CustomTabBarViewController.swift in Sources */,
 				2221676B1E973BDB0031FCB9 /* AppDelegate.swift in Sources */,
+				222167ED1E9741600031FCB9 /* Webinar.swift in Sources */,
+				222167EA1E9740D70031FCB9 /* WelcomeViewController.swift in Sources */,
+				222167DD1E9740D70031FCB9 /* e4cApp.xcdatamodeld in Sources */,
+				222167E21E9740D70031FCB9 /* NewsPageViewController.swift in Sources */,
+				222167E81E9740D70031FCB9 /* WebinarViewController.swift in Sources */,
+				222167D91E9740D70031FCB9 /* CommunityViewController.swift in Sources */,
+				222167E41E9740D70031FCB9 /* NewsViewController.swift in Sources */,
+				222167F71E9741BE0031FCB9 /* ArticleTableViewCell.swift in Sources */,
+				222167E61E9740D70031FCB9 /* WebinarPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2221676E1E973BDB0031FCB9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2221676F1E973BDB0031FCB9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		222167761E973BDB0031FCB9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -262,6 +449,7 @@
 		};
 		2221677D1E973BDB0031FCB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55094112BF78C5B5AA78CFE1 /* Pods-e4cApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = e4cApp/Info.plist;
@@ -274,6 +462,7 @@
 		};
 		2221677E1E973BDB0031FCB9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B8360FB2F44633806ABE358 /* Pods-e4cApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = e4cApp/Info.plist;
@@ -303,6 +492,7 @@
 				2221677E1E973BDB0031FCB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -313,6 +503,16 @@
 				222167721E973BDB0031FCB9 /* e4cApp.xcdatamodel */,
 			);
 			currentVersion = 222167721E973BDB0031FCB9 /* e4cApp.xcdatamodel */;
+			path = e4cApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		222167C61E9740D70031FCB9 /* e4cApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				222167C71E9740D70031FCB9 /* e4cApp.xcdatamodel */,
+			);
+			currentVersion = 222167C71E9740D70031FCB9 /* e4cApp.xcdatamodel */;
 			path = e4cApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
