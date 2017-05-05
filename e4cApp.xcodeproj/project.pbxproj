@@ -11,7 +11,6 @@
 		222167731E973BDB0031FCB9 /* e4cApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222167711E973BDB0031FCB9 /* e4cApp.xcdatamodeld */; };
 		222167751E973BDB0031FCB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222167741E973BDB0031FCB9 /* Assets.xcassets */; };
 		222167781E973BDB0031FCB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222167761E973BDB0031FCB9 /* LaunchScreen.storyboard */; };
-		222167D61E9740D70031FCB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 222167BF1E9740D70031FCB9 /* Assets.xcassets */; };
 		222167D71E9740D70031FCB9 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 222167C01E9740D70031FCB9 /* Base.lproj */; };
 		222167D91E9740D70031FCB9 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167C21E9740D70031FCB9 /* CommunityViewController.swift */; };
 		222167DA1E9740D70031FCB9 /* CommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167C31E9740D70031FCB9 /* CommunityViewController.xib */; };
@@ -39,6 +38,42 @@
 		222167FA1E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167F41E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib */; };
 		222167FB1E9741BE0031FCB9 /* WebinarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167F51E9741BE0031FCB9 /* WebinarTableViewCell.swift */; };
 		222167FC1E9741BE0031FCB9 /* WebinarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167F61E9741BE0031FCB9 /* WebinarTableViewCell.xib */; };
+		222168001E9744640031FCB9 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222167FE1E9744640031FCB9 /* AboutUsViewController.swift */; };
+		222168011E9744640031FCB9 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222167FF1E9744640031FCB9 /* AboutUsViewController.xib */; };
+		222168071E9749F80031FCB9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222168051E9749F80031FCB9 /* LogInViewController.swift */; };
+		222168081E9749F80031FCB9 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222168061E9749F80031FCB9 /* LogInViewController.xib */; };
+		2221680B1E9751AC0031FCB9 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222168091E9751AC0031FCB9 /* FiltersViewController.swift */; };
+		2221680C1E9751AC0031FCB9 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2221680A1E9751AC0031FCB9 /* FiltersViewController.xib */; };
+		2221680F1E976E950031FCB9 /* FiltersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2221680D1E976E950031FCB9 /* FiltersTableViewCell.swift */; };
+		222168101E976E950031FCB9 /* FiltersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2221680E1E976E950031FCB9 /* FiltersTableViewCell.xib */; };
+		224083CA1E9F810E0006F7E0 /* EngineersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224083C81E9F810E0006F7E0 /* EngineersTableViewCell.swift */; };
+		224083CB1E9F810E0006F7E0 /* EngineersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224083C91E9F810E0006F7E0 /* EngineersTableViewCell.xib */; };
+		224083CE1E9F88A60006F7E0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224083CC1E9F88A60006F7E0 /* SignUpViewController.swift */; };
+		224083CF1E9F88A60006F7E0 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224083CD1E9F88A60006F7E0 /* SignUpViewController.xib */; };
+		224083D21EA086EF0006F7E0 /* ProjectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224083D01EA086EF0006F7E0 /* ProjectPageViewController.swift */; };
+		224083D31EA086EF0006F7E0 /* ProjectPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224083D11EA086EF0006F7E0 /* ProjectPageViewController.xib */; };
+		224083D71EA0974E0006F7E0 /* CountryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 224083D61EA0974E0006F7E0 /* CountryPicker.m */; };
+		22455C3F1EAD069300EB50A2 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22455C3E1EAD069300EB50A2 /* UserController.swift */; };
+		22455C411EADACC900EB50A2 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22455C401EADACC900EB50A2 /* WebService.swift */; };
+		227072D61EA927CC002FD769 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227072D41EA927CC002FD769 /* EventTableViewCell.swift */; };
+		227072D71EA927CC002FD769 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227072D51EA927CC002FD769 /* EventTableViewCell.xib */; };
+		227072DA1EA9D72C002FD769 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227072D81EA9D72C002FD769 /* ProfileViewController.swift */; };
+		227072DB1EA9D72C002FD769 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227072D91EA9D72C002FD769 /* ProfileViewController.xib */; };
+		227072DE1EA9DC1F002FD769 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227072DC1EA9DC1F002FD769 /* ProjectTableViewCell.swift */; };
+		227072DF1EA9DC1F002FD769 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227072DD1EA9DC1F002FD769 /* ProjectTableViewCell.xib */; };
+		227072E21EA9F76A002FD769 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227072E01EA9F76A002FD769 /* PeopleViewController.swift */; };
+		227072E31EA9F76A002FD769 /* PeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227072E11EA9F76A002FD769 /* PeopleViewController.xib */; };
+		227072E61EAA09B3002FD769 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227072E41EAA09B3002FD769 /* FavoritesViewController.swift */; };
+		227072E71EAA09B3002FD769 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227072E51EAA09B3002FD769 /* FavoritesViewController.xib */; };
+		227072EA1EAA09C9002FD769 /* EditPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227072E81EAA09C9002FD769 /* EditPersonalViewController.swift */; };
+		227072EB1EAA09C9002FD769 /* EditPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227072E91EAA09C9002FD769 /* EditPersonalViewController.xib */; };
+		227072ED1EAA1ECE002FD769 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227072EC1EAA1ECE002FD769 /* ColorExtension.swift */; };
+		227072EF1EABF5BE002FD769 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227072EE1EABF5BE002FD769 /* User.swift */; };
+		2283094F1EAEC5F5006B3324 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283094E1EAEC5F5006B3324 /* Project.swift */; };
+		22AE5ACF1EA1219600DC0092 /* SectorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE5ACD1EA1219600DC0092 /* SectorsTableViewCell.swift */; };
+		22AE5AD01EA1219600DC0092 /* SectorsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22AE5ACE1EA1219600DC0092 /* SectorsTableViewCell.xib */; };
+		22E529B91EBBD5DD009AEB9D /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E529B71EBBD5DC009AEB9D /* AddProjectViewController.swift */; };
+		22E529BA1EBBD5DD009AEB9D /* AddProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E529B81EBBD5DD009AEB9D /* AddProjectViewController.xib */; };
 		7E6AB8D5BF70BD1AB414681B /* Pods_e4cApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BFD0868FB5E3E39A8497EE /* Pods_e4cApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +114,44 @@
 		222167F41E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotTopicsCollectionViewCell.xib; path = Cells/HotTopicsCollectionViewCell.xib; sourceTree = "<group>"; };
 		222167F51E9741BE0031FCB9 /* WebinarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebinarTableViewCell.swift; path = Cells/WebinarTableViewCell.swift; sourceTree = "<group>"; };
 		222167F61E9741BE0031FCB9 /* WebinarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebinarTableViewCell.xib; path = Cells/WebinarTableViewCell.xib; sourceTree = "<group>"; };
+		222167FE1E9744640031FCB9 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		222167FF1E9744640031FCB9 /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
+		222168051E9749F80031FCB9 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		222168061E9749F80031FCB9 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
+		222168091E9751AC0031FCB9 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		2221680A1E9751AC0031FCB9 /* FiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
+		2221680D1E976E950031FCB9 /* FiltersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersTableViewCell.swift; sourceTree = "<group>"; };
+		2221680E1E976E950031FCB9 /* FiltersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersTableViewCell.xib; sourceTree = "<group>"; };
+		224083C81E9F810E0006F7E0 /* EngineersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineersTableViewCell.swift; sourceTree = "<group>"; };
+		224083C91E9F810E0006F7E0 /* EngineersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EngineersTableViewCell.xib; sourceTree = "<group>"; };
+		224083CC1E9F88A60006F7E0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		224083CD1E9F88A60006F7E0 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		224083D01EA086EF0006F7E0 /* ProjectPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectPageViewController.swift; sourceTree = "<group>"; };
+		224083D11EA086EF0006F7E0 /* ProjectPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectPageViewController.xib; sourceTree = "<group>"; };
+		224083D41EA0974D0006F7E0 /* e4cApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "e4cApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		224083D51EA0974E0006F7E0 /* CountryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryPicker.h; sourceTree = "<group>"; };
+		224083D61EA0974E0006F7E0 /* CountryPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryPicker.m; sourceTree = "<group>"; };
+		22455C3E1EAD069300EB50A2 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		22455C401EADACC900EB50A2 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		227072D41EA927CC002FD769 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		227072D51EA927CC002FD769 /* EventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
+		227072D81EA9D72C002FD769 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		227072D91EA9D72C002FD769 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		227072DC1EA9DC1F002FD769 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		227072DD1EA9DC1F002FD769 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
+		227072E01EA9F76A002FD769 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		227072E11EA9F76A002FD769 /* PeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleViewController.xib; sourceTree = "<group>"; };
+		227072E41EAA09B3002FD769 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		227072E51EAA09B3002FD769 /* FavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
+		227072E81EAA09C9002FD769 /* EditPersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPersonalViewController.swift; sourceTree = "<group>"; };
+		227072E91EAA09C9002FD769 /* EditPersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPersonalViewController.xib; sourceTree = "<group>"; };
+		227072EC1EAA1ECE002FD769 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		227072EE1EABF5BE002FD769 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2283094E1EAEC5F5006B3324 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		22AE5ACD1EA1219600DC0092 /* SectorsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectorsTableViewCell.swift; sourceTree = "<group>"; };
+		22AE5ACE1EA1219600DC0092 /* SectorsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectorsTableViewCell.xib; sourceTree = "<group>"; };
+		22E529B71EBBD5DC009AEB9D /* AddProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
+		22E529B81EBBD5DD009AEB9D /* AddProjectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProjectViewController.xib; sourceTree = "<group>"; };
 		55094112BF78C5B5AA78CFE1 /* Pods-e4cApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-e4cApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-e4cApp/Pods-e4cApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,33 +188,58 @@
 		222167691E973BDB0031FCB9 /* e4cApp */ = {
 			isa = PBXGroup;
 			children = (
+				22E529B71EBBD5DC009AEB9D /* AddProjectViewController.swift */,
+				22E529B81EBBD5DD009AEB9D /* AddProjectViewController.xib */,
 				2221676A1E973BDB0031FCB9 /* AppDelegate.swift */,
+				222167FE1E9744640031FCB9 /* AboutUsViewController.swift */,
+				222167FF1E9744640031FCB9 /* AboutUsViewController.xib */,
+				224083D81EA097580006F7E0 /* Library */,
 				222167BF1E9740D70031FCB9 /* Assets.xcassets */,
 				222167C01E9740D70031FCB9 /* Base.lproj */,
 				222167FD1E9741C60031FCB9 /* Cells */,
+				227072EC1EAA1ECE002FD769 /* ColorExtension.swift */,
 				222167C21E9740D70031FCB9 /* CommunityViewController.swift */,
 				222167C31E9740D70031FCB9 /* CommunityViewController.xib */,
 				222167C41E9740D70031FCB9 /* CustomTabBarViewController.swift */,
 				222167C51E9740D70031FCB9 /* CustomTabBarViewController.xib */,
-				222167C61E9740D70031FCB9 /* e4cApp.xcdatamodeld */,
+				227072E81EAA09C9002FD769 /* EditPersonalViewController.swift */,
+				227072E91EAA09C9002FD769 /* EditPersonalViewController.xib */,
+				227072E41EAA09B3002FD769 /* FavoritesViewController.swift */,
+				227072E51EAA09B3002FD769 /* FavoritesViewController.xib */,
+				222168091E9751AC0031FCB9 /* FiltersViewController.swift */,
+				2221680A1E9751AC0031FCB9 /* FiltersViewController.xib */,
 				222167C81E9740D70031FCB9 /* HomeViewController.swift */,
 				222167C91E9740D70031FCB9 /* HomeViewController.xib */,
-				222167CA1E9740D70031FCB9 /* Images */,
-				222167F01E9741A80031FCB9 /* Models */,
+				222168051E9749F80031FCB9 /* LogInViewController.swift */,
+				222168061E9749F80031FCB9 /* LogInViewController.xib */,
 				222167CC1E9740D70031FCB9 /* NewsPageViewController.swift */,
 				222167CD1E9740D70031FCB9 /* NewsPageViewController.xib */,
 				222167CE1E9740D70031FCB9 /* NewsViewController.swift */,
 				222167CF1E9740D70031FCB9 /* NewsViewController.xib */,
+				227072E01EA9F76A002FD769 /* PeopleViewController.swift */,
+				227072E11EA9F76A002FD769 /* PeopleViewController.xib */,
+				224083D01EA086EF0006F7E0 /* ProjectPageViewController.swift */,
+				224083D11EA086EF0006F7E0 /* ProjectPageViewController.xib */,
+				227072D81EA9D72C002FD769 /* ProfileViewController.swift */,
+				227072D91EA9D72C002FD769 /* ProfileViewController.xib */,
+				224083CC1E9F88A60006F7E0 /* SignUpViewController.swift */,
+				224083CD1E9F88A60006F7E0 /* SignUpViewController.xib */,
+				222167CA1E9740D70031FCB9 /* Images */,
+				222167F01E9741A80031FCB9 /* Models */,
+				22455C3E1EAD069300EB50A2 /* UserController.swift */,
 				222167D01E9740D70031FCB9 /* WebinarPageViewController.swift */,
 				222167D11E9740D70031FCB9 /* WebinarPageViewController.xib */,
 				222167D21E9740D70031FCB9 /* WebinarViewController.swift */,
 				222167D31E9740D70031FCB9 /* WebinarViewController.xib */,
 				222167D41E9740D70031FCB9 /* WelcomeViewController.swift */,
 				222167D51E9740D70031FCB9 /* WelcomeViewController.xib */,
+				22455C401EADACC900EB50A2 /* WebService.swift */,
 				222167741E973BDB0031FCB9 /* Assets.xcassets */,
 				222167761E973BDB0031FCB9 /* LaunchScreen.storyboard */,
 				222167791E973BDB0031FCB9 /* Info.plist */,
+				222167C61E9740D70031FCB9 /* e4cApp.xcdatamodeld */,
 				222167711E973BDB0031FCB9 /* e4cApp.xcdatamodeld */,
+				224083D41EA0974D0006F7E0 /* e4cApp-Bridging-Header.h */,
 			);
 			path = e4cApp;
 			sourceTree = "<group>";
@@ -151,6 +249,8 @@
 			children = (
 				222167EE1E9741630031FCB9 /* Article.swift */,
 				222167EC1E9741600031FCB9 /* Webinar.swift */,
+				227072EE1EABF5BE002FD769 /* User.swift */,
+				2283094E1EAEC5F5006B3324 /* Project.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -160,12 +260,31 @@
 			children = (
 				222167F11E9741BE0031FCB9 /* ArticleTableViewCell.swift */,
 				222167F21E9741BE0031FCB9 /* ArticleTableViewCell.xib */,
+				224083C81E9F810E0006F7E0 /* EngineersTableViewCell.swift */,
+				224083C91E9F810E0006F7E0 /* EngineersTableViewCell.xib */,
+				227072D41EA927CC002FD769 /* EventTableViewCell.swift */,
+				227072D51EA927CC002FD769 /* EventTableViewCell.xib */,
+				2221680D1E976E950031FCB9 /* FiltersTableViewCell.swift */,
+				2221680E1E976E950031FCB9 /* FiltersTableViewCell.xib */,
 				222167F31E9741BE0031FCB9 /* HotTopicsCollectionViewCell.swift */,
 				222167F41E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib */,
 				222167F51E9741BE0031FCB9 /* WebinarTableViewCell.swift */,
 				222167F61E9741BE0031FCB9 /* WebinarTableViewCell.xib */,
+				22AE5ACD1EA1219600DC0092 /* SectorsTableViewCell.swift */,
+				22AE5ACE1EA1219600DC0092 /* SectorsTableViewCell.xib */,
+				227072DC1EA9DC1F002FD769 /* ProjectTableViewCell.swift */,
+				227072DD1EA9DC1F002FD769 /* ProjectTableViewCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		224083D81EA097580006F7E0 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				224083D51EA0974E0006F7E0 /* CountryPicker.h */,
+				224083D61EA0974E0006F7E0 /* CountryPicker.m */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 		425D11ECCA8ADCB49EA66717 /* Frameworks */ = {
@@ -220,6 +339,7 @@
 				TargetAttributes = {
 					222167661E973BDB0031FCB9 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -249,19 +369,33 @@
 			files = (
 				222167E01E9740D70031FCB9 /* Images in Resources */,
 				222167D71E9740D70031FCB9 /* Base.lproj in Resources */,
+				2221680C1E9751AC0031FCB9 /* FiltersViewController.xib in Resources */,
+				222168081E9749F80031FCB9 /* LogInViewController.xib in Resources */,
 				222167E71E9740D70031FCB9 /* WebinarPageViewController.xib in Resources */,
+				224083CF1E9F88A60006F7E0 /* SignUpViewController.xib in Resources */,
+				222168011E9744640031FCB9 /* AboutUsViewController.xib in Resources */,
+				224083CB1E9F810E0006F7E0 /* EngineersTableViewCell.xib in Resources */,
 				222167FA1E9741BE0031FCB9 /* HotTopicsCollectionViewCell.xib in Resources */,
+				227072DB1EA9D72C002FD769 /* ProfileViewController.xib in Resources */,
+				224083D31EA086EF0006F7E0 /* ProjectPageViewController.xib in Resources */,
+				227072E71EAA09B3002FD769 /* FavoritesViewController.xib in Resources */,
 				222167781E973BDB0031FCB9 /* LaunchScreen.storyboard in Resources */,
 				222167751E973BDB0031FCB9 /* Assets.xcassets in Resources */,
+				227072EB1EAA09C9002FD769 /* EditPersonalViewController.xib in Resources */,
+				222168101E976E950031FCB9 /* FiltersTableViewCell.xib in Resources */,
 				222167E91E9740D70031FCB9 /* WebinarViewController.xib in Resources */,
+				227072D71EA927CC002FD769 /* EventTableViewCell.xib in Resources */,
 				222167DA1E9740D70031FCB9 /* CommunityViewController.xib in Resources */,
+				227072E31EA9F76A002FD769 /* PeopleViewController.xib in Resources */,
 				222167EB1E9740D70031FCB9 /* WelcomeViewController.xib in Resources */,
-				222167D61E9740D70031FCB9 /* Assets.xcassets in Resources */,
+				22AE5AD01EA1219600DC0092 /* SectorsTableViewCell.xib in Resources */,
 				222167F81E9741BE0031FCB9 /* ArticleTableViewCell.xib in Resources */,
 				222167E31E9740D70031FCB9 /* NewsPageViewController.xib in Resources */,
+				227072DF1EA9DC1F002FD769 /* ProjectTableViewCell.xib in Resources */,
 				222167DC1E9740D70031FCB9 /* CustomTabBarViewController.xib in Resources */,
 				222167DF1E9740D70031FCB9 /* HomeViewController.xib in Resources */,
 				222167E51E9740D70031FCB9 /* NewsViewController.xib in Resources */,
+				22E529BA1EBBD5DD009AEB9D /* AddProjectViewController.xib in Resources */,
 				222167FC1E9741BE0031FCB9 /* WebinarTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,22 +455,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224083D71EA0974E0006F7E0 /* CountryPicker.m in Sources */,
 				222167FB1E9741BE0031FCB9 /* WebinarTableViewCell.swift in Sources */,
+				22AE5ACF1EA1219600DC0092 /* SectorsTableViewCell.swift in Sources */,
 				222167EF1E9741630031FCB9 /* Article.swift in Sources */,
+				222168071E9749F80031FCB9 /* LogInViewController.swift in Sources */,
 				222167F91E9741BE0031FCB9 /* HotTopicsCollectionViewCell.swift in Sources */,
+				22455C3F1EAD069300EB50A2 /* UserController.swift in Sources */,
+				224083D21EA086EF0006F7E0 /* ProjectPageViewController.swift in Sources */,
 				222167DE1E9740D70031FCB9 /* HomeViewController.swift in Sources */,
+				227072E21EA9F76A002FD769 /* PeopleViewController.swift in Sources */,
+				224083CE1E9F88A60006F7E0 /* SignUpViewController.swift in Sources */,
+				224083CA1E9F810E0006F7E0 /* EngineersTableViewCell.swift in Sources */,
+				227072ED1EAA1ECE002FD769 /* ColorExtension.swift in Sources */,
 				222167731E973BDB0031FCB9 /* e4cApp.xcdatamodeld in Sources */,
 				222167DB1E9740D70031FCB9 /* CustomTabBarViewController.swift in Sources */,
+				22E529B91EBBD5DD009AEB9D /* AddProjectViewController.swift in Sources */,
+				2221680B1E9751AC0031FCB9 /* FiltersViewController.swift in Sources */,
 				2221676B1E973BDB0031FCB9 /* AppDelegate.swift in Sources */,
 				222167ED1E9741600031FCB9 /* Webinar.swift in Sources */,
+				227072DE1EA9DC1F002FD769 /* ProjectTableViewCell.swift in Sources */,
 				222167EA1E9740D70031FCB9 /* WelcomeViewController.swift in Sources */,
 				222167DD1E9740D70031FCB9 /* e4cApp.xcdatamodeld in Sources */,
+				227072DA1EA9D72C002FD769 /* ProfileViewController.swift in Sources */,
 				222167E21E9740D70031FCB9 /* NewsPageViewController.swift in Sources */,
+				22455C411EADACC900EB50A2 /* WebService.swift in Sources */,
+				2221680F1E976E950031FCB9 /* FiltersTableViewCell.swift in Sources */,
 				222167E81E9740D70031FCB9 /* WebinarViewController.swift in Sources */,
+				222168001E9744640031FCB9 /* AboutUsViewController.swift in Sources */,
 				222167D91E9740D70031FCB9 /* CommunityViewController.swift in Sources */,
+				227072D61EA927CC002FD769 /* EventTableViewCell.swift in Sources */,
 				222167E41E9740D70031FCB9 /* NewsViewController.swift in Sources */,
+				227072EA1EAA09C9002FD769 /* EditPersonalViewController.swift in Sources */,
 				222167F71E9741BE0031FCB9 /* ArticleTableViewCell.swift in Sources */,
+				227072E61EAA09B3002FD769 /* FavoritesViewController.swift in Sources */,
 				222167E61E9740D70031FCB9 /* WebinarPageViewController.swift in Sources */,
+				227072EF1EABF5BE002FD769 /* User.swift in Sources */,
+				2283094F1EAEC5F5006B3324 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,10 +607,13 @@
 			baseConfigurationReference = 55094112BF78C5B5AA78CFE1 /* Pods-e4cApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = e4cApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sam.e4cApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "e4cApp/e4cApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -465,10 +623,12 @@
 			baseConfigurationReference = 0B8360FB2F44633806ABE358 /* Pods-e4cApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = e4cApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sam.e4cApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "e4cApp/e4cApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

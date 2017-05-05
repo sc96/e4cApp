@@ -9,11 +9,20 @@
 import UIKit
 
 class CustomTabBarViewController: UITabBarController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.tabBar.tintColor = UIColor.white
+        self.tabBar.barTintColor = UIColor.e4cLightBlue
+        self.tabBar.isTranslucent = true
+        
+
+        
     }
 
     override func didReceiveMemoryWarning() {

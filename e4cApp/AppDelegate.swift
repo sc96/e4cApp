@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var manager = FileManager.default
-    
+    var tabViewController = CustomTabBarViewController()
     
     
     
@@ -32,18 +32,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          self.window?.rootViewController = navigationController
          self.window?.makeKeyAndVisible() */
         
-        var tabViewController = CustomTabBarViewController()
+        UINavigationBar.appearance().tintColor  = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor.e4cLightBlue
+        
+    
+        
+        let documents = manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileUrl = documents.appendingPathComponent("info.txt")
+        
+        if let user = NSKeyedUnarchiver.unarchiveObject(withFile: fileUrl.path) as? User {
+            
+            UserController.sharedInstance.currentUser = user
+            
+        }
         
         let homeViewController = HomeViewController()
         let webinarViewController = WebinarViewController()
         let newsViewController = NewsViewController()
-              let communityViewController = CommunityViewController()
-       // let communityViewController = AboutViewController()
+        
+        
+        var communityNavigationController : UINavigationController
+        
+        if UserController.sharedInstance.currentUser != nil {
+            
+            let communityViewController = CommunityViewController()
+            communityNavigationController = UINavigationController(rootViewController: communityViewController)
+        }
+        else {
+            
+            let welcomeViewController = WelcomeViewController()
+            communityNavigationController = UINavigationController(rootViewController: welcomeViewController)
+
+        }
         
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
         let newsNavigationController = UINavigationController(rootViewController: newsViewController)
         let webinarNavigationController = UINavigationController(rootViewController: webinarViewController)
-        let communityNavigationController = UINavigationController(rootViewController: communityViewController)
+
+        
+        homeNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        newsNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        webinarNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        communityNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "Home-50.png"), selectedImage:UIImage(named: "Home-50.png") )
         let webinarTabBarItem = UITabBarItem(title: "Webinars", image:UIImage(named: "Webinar-50.png") , selectedImage: UIImage(named: "Webinar-50.png"))
@@ -60,9 +90,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let controllers = [homeNavigationController, newsNavigationController, webinarNavigationController, communityNavigationController]
         tabViewController.viewControllers = controllers
         
+        
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
+        
+        
+
+        
         
         
         return true

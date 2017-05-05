@@ -7,5 +7,6 @@ target 'e4cApp' do
 
   # Pods for e4cApp
   pod 'Alamofire', '~> 4.4'
-
+  pod 'DLRadioButton', '~> 1.4' 
+  pod 'SwiftyJSON'
 end

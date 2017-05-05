@@ -19,6 +19,10 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.title = "Home"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,10 +31,21 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: UIButton) {
+        
+        
+        let loginViewController = LogInViewController();
+        
+        self.navigationController?.pushViewController(loginViewController, animated: false)
     }
     
     
     @IBAction func signUpAction(_ sender: UIButton) {
+        
+        let signUpViewController = SignUpViewController();
+        
+        self.navigationController?.pushViewController(signUpViewController, animated: false)
+        
+    
     }
 
     /*

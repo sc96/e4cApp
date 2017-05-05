@@ -1,12 +1,18 @@
 PODS:
   - Alamofire (4.4.0)
+  - DLRadioButton (1.4.9)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - DLRadioButton (~> 1.4)
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  DLRadioButton: 7bb8a6e3768b572469ace553391ab4d2af6f9c19
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 5ab6745cb375be7122fddfff263b3040dc8bd8e3
+PODFILE CHECKSUM: 00b5c2c8b48b8c34ce8f4f10e5d053654a5c86f5
 
 COCOAPODS: 1.2.0

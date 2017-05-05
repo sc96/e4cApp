@@ -19,7 +19,6 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var articleImageView: UIImageView!
     
     
-    @IBOutlet weak var textView: UITextView!
     
 
     override func awakeFromNib() {

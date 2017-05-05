@@ -16,41 +16,39 @@ class Article: NSObject, NSCoding {
     
     
     var title : String
-    var sector: String
-    var author: String
-    var date: String
-    var imageUrl: String
+    var sector: String = ""
+    var content : String
+    var imageUrl: String = ""
+    var id : Int
     
     
     
     
     
-    init(title : String, sector: String, author : String, date : String, imageUrl : String) {
+    init(title : String, content : String, id : Int) {
         self.title = title
-        self.sector = sector
-        self.author = author
-        self.date = date
-        self.imageUrl = imageUrl
+        self.content = content
+        self.id = id
     }
     
     required init? (coder: NSCoder) {
         
         title = (coder.decodeObject(forKey: "title") as? String) ?? ""
         sector = (coder.decodeObject(forKey: "sector") as? String) ?? ""
-        author = (coder.decodeObject(forKey: "author") as? String) ?? ""
-        date = (coder.decodeObject(forKey: "date") as? String) ?? ""
         imageUrl = (coder.decodeObject(forKey: "imageUrl") as? String) ?? ""
+        content = (coder.decodeObject(forKey: "content") as? String) ?? ""
+        id = (coder.decodeObject(forKey: "content") as? Int) ?? 0
         
         
     }
+    
     func encode(with coder: NSCoder) {
         
         coder.encode(title, forKey: "title")
         coder.encode(sector, forKey: "sector")
-        coder.encode(author, forKey: "date")
-        coder.encode(date, forKey: "date")
         coder.encode(imageUrl, forKey: "imageUrl")
-        
+        coder.encode(content, forKey: "content")
+        coder.encode(id, forKey: "id")
     }
     
     

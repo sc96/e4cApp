@@ -16,30 +16,28 @@ class Webinar: NSObject, NSCoding {
     
     
     var title : String
-    var sector: String
-    var author: String
-    var date: String
-    var videoUrl: String
+    var sector: String = ""
+    var content : String
+    var id : Int
+    var videoUrl: String = "wwww.googe.com"
     
 
     
     
     
-    init(title : String, sector: String, author : String, date : String, videoUrl : String) {
+    init(title : String, content : String, id : Int) {
         self.title = title
-        self.sector = sector
-        self.author = author
-        self.date = date
-        self.videoUrl = videoUrl
+        self.id = id
+        self.content = content
     }
     
     required init? (coder: NSCoder) {
         
         title = (coder.decodeObject(forKey: "title") as? String) ?? ""
         sector = (coder.decodeObject(forKey: "sector") as? String) ?? ""
-        author = (coder.decodeObject(forKey: "author") as? String) ?? ""
-        date = (coder.decodeObject(forKey: "date") as? String) ?? ""
         videoUrl = (coder.decodeObject(forKey: "videoUrl") as? String) ?? ""
+        id = (coder.decodeObject(forKey: "id") as? Int) ?? -1
+        content = (coder.decodeObject(forKey: "content") as? String) ?? ""
 
         
     }
@@ -47,9 +45,10 @@ class Webinar: NSObject, NSCoding {
         
         coder.encode(title, forKey: "title")
         coder.encode(sector, forKey: "sector")
-        coder.encode(author, forKey: "date")
-        coder.encode(date, forKey: "date")
         coder.encode(videoUrl, forKey: "videoUrl")
+        coder.encode(id, forKey: "id")
+        coder.encode(content, forKey : "content")
+        
         
     }
     
