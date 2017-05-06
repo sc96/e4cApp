@@ -30,9 +30,9 @@ class UserController: WebService {
         
         
         
-      //  let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/login", method: .post, parameters: parameters)
+        let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/login", method: .post, parameters: parameters)
         
-        let request = WebService.createMutableRequest(url: "http://localhost:8080/api/login", method: .post, parameters: parameters)
+      //  let request = WebService.createMutableRequest(url: "http://localhost:8080/api/login", method: .post, parameters: parameters)
             
         
         WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
@@ -61,20 +61,20 @@ class UserController: WebService {
                 // var fav_webinars : [Int] = json["fav_webinars"].rawValue as! [Int]
                 // var fav_articles : [Int] = json["fav_articles"].rawValue as! [Int]
                 
-                var user_projects : [Int] = []
+                var user_projects : [String] = []
                 var fav_webinars : [Int] = []
                 var fav_articles : [Int] = []
                 
                 if (!json["user_projects"].isEmpty) {
-                    user_projects = json["user_projects"].rawValue as! [Int]
+                    user_projects = json["user_projects"].rawValue as! [String]
                 }
                 
                 if (!json["fav_webinars"].isEmpty) {
-                    user_projects = json["fav_webinars"].rawValue as! [Int]
+                    fav_webinars = json["fav_webinars"].rawValue as! [Int]
                 }
                 
                 if (!json["fav_articles"].isEmpty) {
-                    user_projects = json["fav_articles"].rawValue as! [Int]
+                    fav_articles = json["fav_articles"].rawValue as! [Int]
                 }
                 
                 var user = User(email: user_email, professionalStatus: profStatus, affiliation: affiliation, expertise: expertise, country: country, ageRange: user_age, gender: user_gender, id: user_id)
@@ -118,9 +118,9 @@ class UserController: WebService {
         let parameters : [String : Any] = ["profstatus" : professionalStatus, "affiliation" : affiliation, "expertise" : expertise, "country" : country, "age" : ageRange, "gender": gender, "email" : email, "password" : password]
         
         
-       // let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/createaccount", method: .post, parameters: parameters)
+        let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/createaccount", method: .post, parameters: parameters)
         
-        let request = WebService.createMutableRequest(url: "http://localhost:8080/api/createaccount", method: .post, parameters: parameters)
+       // let request = WebService.createMutableRequest(url: "http://localhost:8080/api/createaccount", method: .post, parameters: parameters)
         
 
         WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
@@ -166,9 +166,9 @@ class UserController: WebService {
         
         let parameters : [String : Any] = ["profstatus" : professionalStatus, "affiliation" : affiliation, "expertise" : expertise, "country" : country, "age" : ageRange, "gender": gender, "id" : id, "user_description" : description, "firstname" : firstName, "lastname" : lastName]
         
-       //  let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/editaccount", method: .post, parameters: parameters)
+         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/editaccount", method: .post, parameters: parameters)
         
-        let request = WebService.createMutableRequest(url: "http://localhost:8080/api/editaccount", method: .post, parameters: parameters)
+      //  let request = WebService.createMutableRequest(url: "http://localhost:8080/api/editaccount", method: .post, parameters: parameters)
         
         WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
             

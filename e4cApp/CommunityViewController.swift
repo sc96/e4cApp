@@ -30,6 +30,8 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
 
         
+        self.navigationController?.navigationBar.barTintColor = UIColor.e4cLightBlue
+        
         searchBar.delegate = self
         
         

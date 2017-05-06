@@ -51,7 +51,6 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
          */
         
         if (searchBar.text != nil) {
-            
             searchBarSearchButtonClicked(searchBar)
         }
         
@@ -122,9 +121,7 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if message == nil {
                 
-                
                 print(responseCode)
-                
             }
                 
             else {
@@ -155,7 +152,9 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         
-        let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getwebinarsforsectors", method: .post, parameters: parameters)
+   //     let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getwebinarsforsectors", method: .post, parameters: parameters)
+        
+        let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getallwebinars", method: .get, parameters: nil)
         
         
         WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
@@ -166,7 +165,7 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             
                 
-                print(json)
+                // print(json)
                 self.webinarsArray = []
                 let numResults = json.count
                 if (numResults >= 1) {

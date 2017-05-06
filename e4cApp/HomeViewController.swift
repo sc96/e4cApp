@@ -129,6 +129,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         newsPageViewController.sector = articlesArray[indexPath.row].sector
    //     newsPageViewController.date = articlesArray[indexPath.row].date
         newsPageViewController.imageUrl = articlesArray[indexPath.row].imageUrl
+        newsPageViewController.articleId = -1
+        newsPageViewController.content = "<p> hi </p>"
         
         self.navigationController?.pushViewController(newsPageViewController, animated: true)
     }

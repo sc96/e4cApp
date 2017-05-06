@@ -26,7 +26,7 @@ class User : NSObject, NSCoding {
     var webinarFilters : [Bool] = [false, false, false, false, false, false, false, false, false]
     var favoritedArticles : [Int] = []
     var favoritedWebinars : [Int] = []
-    var createdProjects : [Int] = []
+    var createdProjects : [String] = []
     var user_descript : String = ""
     
     
@@ -63,7 +63,7 @@ class User : NSObject, NSCoding {
         
         favoritedArticles =  (coder.decodeObject(forKey: "favoritedArticles") as? [Int]) ?? []
         favoritedWebinars = (coder.decodeObject(forKey: "favoritedWebinars") as? [Int]) ?? []
-        createdProjects = (coder.decodeObject(forKey: "createdProjects") as? [Int]) ?? []
+        createdProjects = (coder.decodeObject(forKey: "createdProjects") as? [String]) ?? []
         user_descript = (coder.decodeObject(forKey: "user_descript") as? String) ?? ""
         
     }

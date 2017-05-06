@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsPageViewController: UIViewController {
+class NewsPageViewController: UIViewController, UIWebViewDelegate {
     
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -29,17 +29,22 @@ class NewsPageViewController: UIViewController {
     var manager  = FileManager.default
     
     var currArticle : Article?
+    var start : DispatchTime?
+    var end : DispatchTime?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        webView.delegate = self
+        
         let add_button : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Favorites-50.png"),  style: .bordered,  target: self, action: #selector(favoriteAction))
         navigationItem.rightBarButtonItem = add_button
         
         titleLabel.text = articleTitle!
-        
+
         
         currArticle = Article(title: articleTitle!, content: content!, id: articleId!)
         
@@ -71,6 +76,16 @@ class NewsPageViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        self.start = DispatchTime.now()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        self.end = DispatchTime.now()
+        print(self.end!.uptimeNanoseconds)
+        print(self.start!.uptimeNanoseconds)
     }
     
     

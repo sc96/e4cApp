@@ -21,6 +21,8 @@ class WelcomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.title = "Home"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+      //  UINavigationBar.appearance().barTintColor = UIColor.e4cLightBlue
+        self.navigationController?.navigationBar.barTintColor = UIColor.e4cLightBlue
         
         
     }

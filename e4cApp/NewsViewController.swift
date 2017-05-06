@@ -6,6 +6,10 @@
 //  Copyright © 2017 Sam. All rights reserved.
 //
 
+// Free icons used from:  https://icons8.com/
+
+
+
 import UIKit
 import Alamofire
 import SwiftyJSON
@@ -21,6 +25,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var articlesArray : [Article] = []
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,7 +55,6 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         if (searchBar.text != nil) {
-            
             searchBarSearchButtonClicked(searchBar)
         }
     }
@@ -184,7 +188,6 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if error == nil {
                 
-                
                 print(articlesCount)
                 
             }
@@ -215,9 +218,12 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             // parameters = ["sectors": [true, true, true, false, false, false, false, false, false]]
         }
         
-
+        
         
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getnewsforsectors", method: .post, parameters: parameters)
+        
+    //    let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getallnews", method: .get, parameters: nil)
+        
         
         
         WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
@@ -226,7 +232,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if (responseCode == 200) {
                 
-                print(json)
+           //     print(json)
                 
                 self.articlesArray = []
                 
