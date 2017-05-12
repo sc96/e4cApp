@@ -32,11 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If it doesn't, then the user previously pressed logged out during his previous session
         let documents = manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileUrl = documents.appendingPathComponent("info.txt")
-        
         if let user = NSKeyedUnarchiver.unarchiveObject(withFile: fileUrl.path) as? User {
-            
             UserController.sharedInstance.currentUser = user
-            
         }
         
         

@@ -18,7 +18,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var segmentController: UISegmentedControl!
     
-    
+    // data array for Webinars/Articles
     var articles  : [Article] = []
     var webinars : [Webinar] = []
     
@@ -28,24 +28,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
+        // setting up tableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "articleCell")
         tableView.register(UINib(nibName: "WebinarTableViewCell", bundle: nil), forCellReuseIdentifier: "webinarCell")
-        
-        /*
-        UserController.sharedInstance.currentUser!.favoritedArticles = []
-        UserController.sharedInstance.currentUser!.favoritedWebinars = []
-        let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileUrl = documents.appendingPathComponent("info.txt")
-        NSKeyedArchiver.archiveRootObject(UserController.sharedInstance.currentUser!, toFile: fileUrl.path)
-        print("ll")
-         
- */
-
-       
+  
     }
     
     
@@ -64,11 +52,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch (segmentController.selectedSegmentIndex) {
-            
+        
+        // news articles
         case 0:
             return UserController.sharedInstance.currentUser!.favoritedArticles.count
             break
-            
+        // webinars
         case 1:
             return UserController.sharedInstance.currentUser!.favoritedWebinars.count
             break
@@ -106,16 +95,18 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
         
-        
+        // news articles
         if segmentController.selectedSegmentIndex == 0 {
             
             let cell:ArticleTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "articleCell") as! ArticleTableViewCell
             
+            
+
             let articleID = UserController.sharedInstance.currentUser!.favoritedArticles[indexPath.row]
             let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileUrl = documents.appendingPathComponent("Article-\(articleID)")
-        
-            
+
+            // get favorited article from phone's memory
             if let tempArticle = NSKeyedUnarchiver.unarchiveObject(withFile: fileUrl.path) as? Article {
                 
                 tempArticle.id = articleID
@@ -127,7 +118,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             return cell
         }
-            
+            // webinars
             else {
                 
                 let cell:WebinarTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "webinarCell") as! WebinarTableViewCell
@@ -135,7 +126,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                 let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
                 let fileUrl = documents.appendingPathComponent("Webinar-\(webinarID)")
             
-            
+                // get favorited webinar from phone's memory
                 if let tempWebinar = NSKeyedUnarchiver.unarchiveObject(withFile: fileUrl.path) as? Webinar {
                 
                 tempWebinar.id = webinarID
@@ -157,24 +148,33 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
         
-        
+        // news articles
         if (segmentController.selectedSegmentIndex == 0) {
             
             let newPageViewController = NewsPageViewController(nibName: "NewsPageViewController", bundle: nil)
+            
+            // gets info from data array
             newPageViewController.articleTitle = articles[indexPath.row].title
             newPageViewController.articleId = articles[indexPath.row].id
             newPageViewController.sector = articles[indexPath.row].sector
             newPageViewController.content = articles[indexPath.row].content
+            
+            // navigate to NewsPageViewController
             self.navigationController?.pushViewController(newPageViewController, animated: true)
         }
-        
+            
+        // webinars
         else {
             
             let webinarPageViewController = WebinarPageViewController(nibName: "WebinarPageViewController", bundle: nil)
+            
+            // gets info from data array
             webinarPageViewController.videotitle = webinars[indexPath.row].title
             webinarPageViewController.sector = webinars[indexPath.row].sector
             webinarPageViewController.webinarId = webinars[indexPath.row].id
             webinarPageViewController.content = webinars[indexPath.row].content
+            
+            // navigate to WebinarPageViewController
             self.navigationController?.pushViewController(webinarPageViewController, animated: true)
         }
         
@@ -183,18 +183,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
 
     
+    // reloads tableView when segment changes
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         
         tableView.reloadData()
     }
     
     
-    func selectAction(sender : UITapGestureRecognizer) {
-        
-        
-        self.tableView(self.tableView, didSelectRowAt: IndexPath(row: sender.view!.tag, section: 0))
-        
-    }
 
     /*
     // MARK: - Navigation

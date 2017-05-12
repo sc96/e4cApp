@@ -95,6 +95,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
+    // getting value from its respective Array
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         if pickerView == affiliationPicker {
@@ -114,40 +115,9 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label: UILabel
-        
-        
-        if let view = view as? UILabel {
-            label = view
-        } else {
-            label = UILabel()
-        }
-        
-        label.textColor = .black
-        label.textAlignment = .center
-        label.font = UIFont(name: "SanFranciscoText-Light", size: 12)
-        
-        // getting value from its respective Array
-        if pickerView == affiliationPicker {
-            label.text = affiliationOptions[row]
-        }
-        else if pickerView == professionalPicker {
-            label.text =  professionalOptions[row]
-        }
-        else {
-            label.text = ageOptions[row]
-        }
-        
-        return label
-    
-    }
-    
-    
-    
+    // pretty basic for now, but can easily add more requirements, contain an uppercase, etc
     func passwordVerify (password : String, retype: String) -> Bool {
         
-        // pretty basic for now, but can easily add more requirements, contain an uppercase, etc
         
         if (password != retype) {
             return false
@@ -165,7 +135,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         var password : String = ""
         
         
-        // making sure fields are entered
+        // making sure the text fields are entered
         if (emailField.text == "" || passwordField.text == "" || retypeField.text == "") {
             
             let alert = UIAlertController(title: "Error", message: "All fields must be entered", preferredStyle: UIAlertControllerStyle.alert)
@@ -178,6 +148,8 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return
         }
             
+            
+        // fields are entered
         else {
             
             email = emailField.text!
@@ -250,28 +222,41 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             // success
             if user != nil {
                 
+                
+                // set current User
                 UserController.sharedInstance.currentUser = user
+                
+                // save current user to the phone's memory
                 let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
                 let fileUrl = documents.appendingPathComponent("info.txt")
                 NSKeyedArchiver.archiveRootObject(UserController.sharedInstance.currentUser!, toFile: fileUrl.path)
                 
                 
                 
-                
+                // instantiating the CommunityViewController
                 let communityViewController = CommunityViewController()
+                
+                // creating a new navBar and setting the root Viewcontroller
                 var communityNavigationController = UINavigationController(rootViewController: communityViewController)
+                
+                // creating tab Bar item
                 let communityTabBarItem = UITabBarItem(title: "Community", image:UIImage(named: "Community-50.png") , selectedImage: UIImage(named: "Community-50.png"))
                 communityNavigationController.tabBarItem = communityTabBarItem
                 
-                
+
+                // appearance
                 communityNavigationController.navigationBar.tintColor = UIColor.white
                 communityNavigationController.navigationBar.barTintColor = UIColor.supportRed
                 
+                
+                // changing the fourth tab
                 let appdelegate = UIApplication.shared.delegate as! AppDelegate
                 appdelegate.tabViewController.viewControllers![3] = communityNavigationController
                 
             }
                 
+                
+            // error signing up.
             else {
                 
                 let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)

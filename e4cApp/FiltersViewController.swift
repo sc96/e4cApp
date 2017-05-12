@@ -21,7 +21,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     var type :String?
     var manager = FileManager.default
     
-    
+    // data array for filters
     var sectors : [String] = ["Featured", "Water", "Energy", "Health", "Housing", "Agriculture", "Sanitation", "ICT", "Transport"]
     
 
@@ -32,11 +32,10 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         titleLabel.text = type
         
-        
+        // set up tableView
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "FiltersTableViewCell", bundle: nil), forCellReuseIdentifier: "filtersCell")
-        
         tableView.allowsMultipleSelection = true
         
         
@@ -51,8 +50,8 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
-        return 9;
+        // 9
+        return sectors.count
         
     }
     
@@ -67,7 +66,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.titleLabel.text = sector
         
         
-        // switch images here
+        // switch images and backgroundColor
         switch sector {
             
             case "Water" :
@@ -106,32 +105,37 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.selectionStyle = .none
         
         
+        
+        // user is logged in
         if (UserController.sharedInstance.currentUser != nil) {
         
+            // we look at the user's webinar filter array
             if (type == "Webinars") {
         
        
-            
+            // false
             if (UserController.sharedInstance.currentUser?.webinarFilters[indexPath.row] == false) {
                 cell.accessoryType = .none
                 
             }
             
+            // true
             else {
                 cell.accessoryType = .checkmark
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
             }
         }
-        
+            // we look at the user's news articles filter array
             else {
             
         
-            
+                // false
                 if (UserController.sharedInstance.currentUser?.articleFilters[indexPath.row] == false) {
                 cell.accessoryType = .none
                 
                 }
                 
+                // true
                 else {
                     cell.accessoryType = .checkmark
                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
@@ -139,32 +143,41 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         
+            
+        // the user it not logged in, so we're looking at the tempFilter arrays
         else {
             
+            // we look at tempWebinarFilters
             if (type == "Webinars") {
                 
                 
+                // false
                 if (UserController.sharedInstance.tempWebinarFilters[indexPath.row] == false) {
                     cell.accessoryType = .none
                     
                 }
-                    
+                
+                // true
                 else {
                     cell.accessoryType = .checkmark
                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
                 }
             }
-                
+              
+            // we look at tempArticlesFilters
             else {
                 
                 
-                
+                // false
                 if (UserController.sharedInstance.tempArticleFilters[indexPath.row] == false) {
                     cell.accessoryType = .none
                     
                 }
                     
+                    
+                // true
                 else {
+                    
                     cell.accessoryType = .checkmark
                     tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
                 }
@@ -173,17 +186,21 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
      
         
-        print(cell.isSelected);
-        
         return cell
     }
+    
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         
+        
+        // user is logged in
         if (UserController.sharedInstance.currentUser != nil) {
         
+            
+            // webinars
             if (type == "Webinars") {
             
         
@@ -193,20 +210,26 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             }
         
+                
+            // news articles
             else  {
             
     
                 UserController.sharedInstance.currentUser?.articleFilters[indexPath.row] = true
             }
             
+            // we save the filters to the phone's memory
             let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileUrl = documents.appendingPathComponent("info.txt")
             NSKeyedArchiver.archiveRootObject(UserController.sharedInstance.currentUser!, toFile: fileUrl.path)
             
         }
         
+            
+        // user is not logged in
         else {
             
+            // webinars
             if (type == "Webinars") {
                 
                 
@@ -216,6 +239,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             }
                 
+            // news articles
             else  {
                 
                 
@@ -227,8 +251,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
 
-        
-        print("Selected was presed")
+
         return
     }
     
@@ -237,37 +260,44 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
         
-        print("deselected is press")
         
+        // current user is logged in
         if (UserController.sharedInstance.currentUser != nil) {
         
+            // webinars
             if (type == "Webinars") {
         
             
                 UserController.sharedInstance.currentUser?.webinarFilters[indexPath.row] = false
             }
         
+            // news articles
             else {
             
                 
                 UserController.sharedInstance.currentUser?.articleFilters[indexPath.row] = false
             }
             
-            // this can be a performance issue
+            // save current filter options to phone's memory
             let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileUrl = documents.appendingPathComponent("info.txt")
             NSKeyedArchiver.archiveRootObject(UserController.sharedInstance.currentUser!, toFile: fileUrl.path)
             
         }
         
+            
+        // current user is not logged in
         else {
             
+            // webinars
             if (type == "Webinars") {
                 
                 
                 UserController.sharedInstance.tempWebinarFilters[indexPath.row] = false
             }
+              
                 
+            // news articles
             else {
                 
                 
@@ -291,7 +321,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     
-
+    // dismiss the modal presentation
     @IBAction func backButtonPressed(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)

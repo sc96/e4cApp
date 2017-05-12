@@ -37,9 +37,9 @@ class LogInViewController: UIViewController {
 
     @IBAction func loginPressed(_ sender: UIButton) {
         
-        let communityViewController = CommunityViewController();
         
         
+        // check if fields are entered
         if (emailField.text == "" || passwordField.text == "") {
             
             
@@ -50,38 +50,47 @@ class LogInViewController: UIViewController {
         var email = emailField.text!
         var password = passwordField.text!
         
+        
         UserController.sharedInstance.loginUser(email: email, password: password, onCompletion: {user, message in
             
+            
+            // success
             if user != nil {
                 
+                // set current user
                 UserController.sharedInstance.currentUser = user
+                
+                // save current user to the phone's memroy
                 let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
                 let fileUrl = documents.appendingPathComponent("info.txt")
                 NSKeyedArchiver.archiveRootObject(UserController.sharedInstance.currentUser!, toFile: fileUrl.path)
                 
+                // create an alert
                 let alert =  UIAlertController (title: "Welcome, " + user!.firstName , message: "Login successful.", preferredStyle:  UIAlertControllerStyle.alert)
                 
                 let alertAction1 = UIAlertAction( title: "Ok" , style: .cancel, handler: { action in
                     
                  
+                    // instantiating CommunityViewController
                     let communityViewController = CommunityViewController()
                     var communityNavigationController = UINavigationController(rootViewController: communityViewController)
+                    
+                    // create Tab Bar item
                     let communityTabBarItem = UITabBarItem(title: "Community", image:UIImage(named: "Community-50.png") , selectedImage: UIImage(named: "Community-50.png"))
                     communityNavigationController.tabBarItem = communityTabBarItem
                     
-                    
+                    // appearance
                     communityNavigationController.navigationBar.tintColor = UIColor.white
                     communityNavigationController.navigationBar.barTintColor = UIColor.supportRed
                     
+                    // changing the Tab Bar's fourth tab
                     let appdelegate = UIApplication.shared.delegate as! AppDelegate
                     appdelegate.tabViewController.viewControllers![3] = communityNavigationController
-
-                        
-                        
-                        
+                    
                         
                     })
                 
+                // show alert
                 alert.addAction(alertAction1)
                 self.navigationController?.present(alert, animated: true, completion: nil)
                
@@ -89,6 +98,7 @@ class LogInViewController: UIViewController {
                 
             }
             
+            // not success
             else {
                 
                 self.messageLabel.text = message

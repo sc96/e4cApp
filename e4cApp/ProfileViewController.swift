@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
         
     }
     
-    
+    // navigates to EditPersonalViewController
     @IBAction func personalPressed(_ sender: UIButton) {
 
         
@@ -44,6 +44,7 @@ class ProfileViewController: UIViewController {
         
     }
 
+    // logout
     @IBAction func tempLogOut(_ sender: UIButton) {
         
         
@@ -57,7 +58,7 @@ class ProfileViewController: UIViewController {
             let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let fileUrl = documents.appendingPathComponent("info.txt")
             
-            
+            // removing current user from the filesystem
             if manager.fileExists(atPath: fileUrl.path) {
                 
                 do {
@@ -71,14 +72,22 @@ class ProfileViewController: UIViewController {
             
             }
             
+            
+            // instantiating WelcomeViewController
             let welcomeViewController = WelcomeViewController()
             var communityNavigationController = UINavigationController(rootViewController: welcomeViewController)
+            
+            // creating TabBarItem
             let communityTabBarItem = UITabBarItem(title: "Community", image:UIImage(named: "Community-50.png") , selectedImage: UIImage(named: "Community-50.png"))
             communityNavigationController.tabBarItem = communityTabBarItem
             
+            
+            // appearance
             communityNavigationController.navigationBar.tintColor = UIColor.white
             communityNavigationController.navigationBar.barTintColor = UIColor.supportRed
             
+            
+            // changing the Tabbar's fourth tab
             let appdelegate = UIApplication.shared.delegate as! AppDelegate
             appdelegate.tabViewController.viewControllers![3] = communityNavigationController
         }

@@ -30,8 +30,8 @@ class WebinarPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         
+        // add Favorite Button
         let add_button : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Favorites-50.png"),  style: .plain,  target: self, action: #selector(favoriteAction))
         navigationItem.rightBarButtonItem = add_button
         
@@ -47,7 +47,7 @@ class WebinarPageViewController: UIViewController {
         let cssString = "<style> body { font-family: Helvetica; font-size: 12px} </style>" + content!
         webView.loadHTMLString(cssString, baseURL: nil)
         
-        // If we're logged in, check for favorites
+        // If we're logged in, check if favorited
         if (UserController.sharedInstance.currentUser != nil) {
             
             

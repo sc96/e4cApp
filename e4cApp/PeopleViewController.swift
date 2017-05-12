@@ -45,10 +45,70 @@ class PeopleViewController: UIViewController {
         
         nameLabel.text = name!
         emailLabel.text = email!
-        countryLabel.text = "Usa"
-        affiliationLabel.text = "Student"
-        professionalLabel.text = "Academia"
         aboutText.text = about!
+        
+        // This is Dummy. TODO: switch string based on Int. Should correspond to the CountryPicker
+        countryLabel.text = "Usa"
+        
+        if professional == 0 {
+            professionalLabel.text = "Student"
+        }
+        
+        else if professional == 1 {
+            professionalLabel.text = "Practicing Engineer"
+            
+        }
+        
+        else if professional == 2 {
+            professionalLabel.text = "Faculty"
+            
+        }
+        
+        else if professional == 3 {
+            professionalLabel.text = "GD Practioner"
+            
+        }
+        
+        else if professional == 4 {
+            professionalLabel.text = "Retired"
+            
+        }
+        
+        else {
+            
+            professionalLabel.text = "Other"
+            
+        }
+        
+        if affiliation == 0 {
+            affiliationLabel.text = "Academia"
+        }
+            
+        else if affiliation == 1 {
+            affiliationLabel.text = "Industry"
+            
+        }
+            
+        else if affiliation == 2 {
+            affiliationLabel.text = "Entrepeneur"
+            
+        }
+            
+        else if affiliation == 3 {
+            affiliationLabel.text = "Government"
+            
+        }
+            
+        else if affiliation == 4 {
+            affiliationLabel.text = "Nonprofit"
+            
+        }
+            
+        else {
+            affiliationLabel.text = "Other"
+            
+        }
+        
         
     }
 

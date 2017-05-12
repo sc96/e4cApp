@@ -45,6 +45,8 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBOutlet weak var expertButton: DLRadioButton!
     
+    
+    // data arrays for pickerViews
     var ageOptions = ["0-17", "18-24", "25-34", "35-44", "45-64", "65+"];
     var professionalOptions = ["Student", "Practicing Engineer",
                                "Faculty", "Global Development Practitioner", "Retired", "Other"]
@@ -54,10 +56,9 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // setting delegates and datasources
         affiliationPicker.dataSource = self
         affiliationPicker.delegate = self
-        
         
         professionalPicker.dataSource = self
         professionalPicker.delegate = self
@@ -65,6 +66,8 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
         agePicker.delegate = self
         agePicker.dataSource = self
         
+        
+        // save current user to a variable (more succint)
         var currentUser = UserController.sharedInstance.currentUser!
         
         // populating IBOutlets
@@ -76,7 +79,7 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
         professionalPicker.selectRow(currentUser.professionalStatus, inComponent: 0, animated: false)
         countryPicker.selectRow(currentUser.country, inComponent: 0, animated: false)
         
-        
+        // populating the pickers
         switch(currentUser.expertise) {
         case 0:
             noviceButton.isSelected = true
@@ -126,6 +129,7 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
+        // gets info from respective array
         if pickerView == affiliationPicker {
             return affiliationOptions[row]
         }
@@ -143,36 +147,6 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label: UILabel
-        
-        
-        if let view = view as? UILabel {
-            label = view
-        } else {
-            label = UILabel()
-        }
-        
-        label.textColor = .black
-        label.textAlignment = .center
-        label.font = UIFont(name: "SanFranciscoText-Light", size: 12)
-        
-
-        
-        if pickerView == affiliationPicker {
-            label.text = affiliationOptions[row]
-        }
-        else if pickerView == professionalPicker {
-            label.text =  professionalOptions[row]
-        }
-        else {
-            label.text = ageOptions[row]
-        }
-        
-        return label
-        
-    }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -186,6 +160,7 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
         var lastName : String
         var user_descript : String
         
+        // get firstName
         if (firstNameLabel.text == nil) {
             firstName = ""
         }
@@ -194,7 +169,7 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         
     
-        
+        // get lastName
         if (lastNameLabel.text == nil) {
             lastName = ""
         }
@@ -202,7 +177,7 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
             lastName = lastNameLabel.text!
         }
         
-        
+        // get description
         if (textView.text == nil) {
             user_descript = ""
         }
@@ -210,6 +185,7 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
             user_descript = textView.text!
         }
         
+        // get the indices of the selectedRows of the pickers
         var profStatus = professionalPicker.selectedRow(inComponent: 0)
         var affiliation = affiliationPicker.selectedRow(inComponent: 0)
         var ageRange = agePicker.selectedRow(inComponent: 0)
@@ -218,6 +194,7 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
         var gender : Int
         var expertise :Int
         
+        // get the radioButton's selection
         if (maleButton.isSelected) {
             gender = 0
         }
@@ -238,13 +215,14 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
             expertise = 2
         }
         
-        
+        // call editUser
         UserController.sharedInstance.editUser(firstName: firstName, lastName: lastName, professionalStatus: profStatus, affiliation: affiliation, expertise: expertise, country: country, ageRange: ageRange, gender: gender, id: UserController.sharedInstance.currentUser!.id, description: user_descript, onCompletion: {code, message in
             
+            // success
             if code == 200 {
                 
-                print(message)
-               // self.dismiss(animated: true, completion: nil)
+
+               // create success alert
                 let alert =  UIAlertController (title: "Saved", message: "Informated Updated", preferredStyle:  UIAlertControllerStyle.alert)
                 
                 let alertAction1 = UIAlertAction( title: "Ok" , style: .cancel, handler: { action in
@@ -253,10 +231,12 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
                     print("does it get ehre")
                 })
                 
+                // add the alert
                 alert.addAction(alertAction1)
                 self.navigationController?.present(alert, animated: true, completion: nil)
             }
             
+            // maybe an alert as well to show failure?
             else {
                 
                 print(message)
