@@ -19,6 +19,7 @@ class CustomTabBarViewController: UITabBarController{
         
         // E4C's color
         self.tabBar.tintColor = UIColor.white
+        self.tabBar.unselectedItemTintColor = UIColor.e4cDarkBlue
         self.tabBar.barTintColor = UIColor.e4cLightBlue
         self.tabBar.isTranslucent = true
         

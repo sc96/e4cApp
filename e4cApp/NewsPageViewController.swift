@@ -49,9 +49,9 @@ class NewsPageViewController: UIViewController, UIWebViewDelegate, UITabBarDeleg
         currArticle = Article(title: articleTitle!, content: content!, id: articleId!)
         
         
-        let cssString = 
+        let cssString = "<style> body { font-family: Helvetica; font-size: 12px} </style>" + content!
         
-        webView.loadHTMLString(content!, baseURL: nil)
+        webView.loadHTMLString(cssString, baseURL: nil)
         
         checkForFavorites();
         

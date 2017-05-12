@@ -13,10 +13,6 @@ class WebinarPageViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    
-    @IBOutlet weak var sectorLabel: UILabel!
-    
-    
     @IBOutlet weak var webView: UIWebView!
     
     
@@ -42,14 +38,14 @@ class WebinarPageViewController: UIViewController {
         
         // set fields
         titleLabel.text = videotitle
-        sectorLabel.text = sector
         
         // set Current Webinar
         currWebinar = Webinar(title: videotitle!, content: content!, id: webinarId!)
         currWebinar!.sector = sector!
         
         // load body of webnar
-        webView.loadHTMLString(content!, baseURL: nil)
+        let cssString = "<style> body { font-family: Helvetica; font-size: 12px} </style>" + content!
+        webView.loadHTMLString(cssString, baseURL: nil)
         
         // If we're logged in, check for favorites
         if (UserController.sharedInstance.currentUser != nil) {

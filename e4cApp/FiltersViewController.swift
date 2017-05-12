@@ -71,28 +71,28 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch sector {
             
             case "Water" :
-                cell.imageLabel.image = UIImage(named: "Water-50.png")
+                cell.imageLabel.image = UIImage(named: "water.png")
                 cell.backgroundColor = UIColor.waterColor
             case "Energy" :
-                cell.imageLabel.image = UIImage(named: "Idea-50.png")
+                cell.imageLabel.image = UIImage(named: "energy.png")
                 cell.backgroundColor = UIColor.energyColor
             case "Health" :
-                cell.imageLabel.image = UIImage(named: "Clinic-50.png")
+                cell.imageLabel.image = UIImage(named: "health.png")
                 cell.backgroundColor = UIColor.healthColor
             case "Housing" :
-                cell.imageLabel.image = UIImage(named: "Tent-50.png")
+                cell.imageLabel.image = UIImage(named: "housing.png")
                 cell.backgroundColor = UIColor.housingColor
             case "Agriculture" :
-                cell.imageLabel.image = UIImage(named: "Compost Heap-50.png")
+                cell.imageLabel.image = UIImage(named: "agriculture.png")
                 cell.backgroundColor = UIColor.agricultureColor
             case "Sanitation" :
-                cell.imageLabel.image = UIImage(named: "Soap-50.png")
+                cell.imageLabel.image = UIImage(named: "sanitation.png")
                 cell.backgroundColor = UIColor.sanitationColor
             case "ICT" :
-                cell.imageLabel.image = UIImage(named: "Smartphone RAM-50.png")
+                cell.imageLabel.image = UIImage(named: "ict.png")
                 cell.backgroundColor = UIColor.ICTColor
             case "Transport" :
-                cell.imageLabel.image = UIImage(named: "Shuttle-50.png")
+                cell.imageLabel.image = UIImage(named: "transport.png")
                 cell.backgroundColor = UIColor.transportColor
             default:
                 cell.imageLabel.image = nil
