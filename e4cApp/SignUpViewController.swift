@@ -44,7 +44,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var expertButton: DLRadioButton!
     
-    
+    // data arrays for pickerViews
     var ageOptions = ["0-17", "18-24", "25-34", "35-44", "45-64", "65+"];
     var professionalOptions = ["Student", "Practicing Engineer",
                                "Faculty", "Global Development Practitioner", "Retired", "Other"]
@@ -56,15 +56,11 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         
+        // setting pickers' delegates and datasources
         affiliationPicker.dataSource = self
         affiliationPicker.delegate = self
         
-        
-        
-        // countryPicker.dataSource = self
-        // countryPicker.delegate = self
     
         professionalPicker.dataSource = self
         professionalPicker.delegate = self
@@ -132,8 +128,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         label.textAlignment = .center
         label.font = UIFont(name: "SanFranciscoText-Light", size: 12)
         
-        // where data is an Array of String
-        
+        // getting value from its respective Array
         if pickerView == affiliationPicker {
             label.text = affiliationOptions[row]
         }
@@ -163,11 +158,14 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
+    // SignUp button pressed
     @IBAction func signUpPressed(_ sender: UIButton) {
         
         var email : String = ""
         var password : String = ""
-            
+        
+        
+        // making sure fields are entered
         if (emailField.text == "" || passwordField.text == "" || retypeField.text == "") {
             
             let alert = UIAlertController(title: "Error", message: "All fields must be entered", preferredStyle: UIAlertControllerStyle.alert)
@@ -187,7 +185,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             
         }
         
-        
+        // verify password
         if (!passwordVerify(password: passwordField.text!, retype: retypeField.text!)) {
             
             let alert = UIAlertController(title: "Error", message: "Password must be at least 8 characters long", preferredStyle: UIAlertControllerStyle.alert)
@@ -201,7 +199,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
 
-        
+        // getting info from IBOutlets
         var professionalStatus = professionalPicker.selectedRow(inComponent: 0)
         var affiliation = affiliationPicker.selectedRow(inComponent: 0)
         var country = countryPicker.selectedRow(inComponent: 0)
@@ -231,6 +229,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         
+        // All fields must be entered
         if (gender == -1 || expertise == -1) {
             
             let alert = UIAlertController(title: "Error", message: "All fields must be entered", preferredStyle: UIAlertControllerStyle.alert)
@@ -243,10 +242,12 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             return
         }
         
+        
+        // registering user
         UserController.sharedInstance.registerUser(email: email, password: password, professionalStatus: professionalStatus, affiliation: affiliation, expertise: expertise, country: country, ageRange: ageRange, gender: gender, onCompletion: {user, message in
 
             
-            
+            // success
             if user != nil {
                 
                 UserController.sharedInstance.currentUser = user
@@ -284,9 +285,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
             
         })
-        
-        // let communityViewController = CommunityViewController();
-        // self.navigationController?.pushViewController(communityViewController, animated: true)
+  
     }
     
     

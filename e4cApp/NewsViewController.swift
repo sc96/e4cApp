@@ -47,19 +47,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         refreshControl.attributedTitle = NSAttributedString(string: "Release to refresh")
         refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
-        
-        // dummy data for now
-        
-        /*
-        
-        for i in 0...9 {
-            
-            let tempArticle = Article(title: "title \(i)", content : "content \(i)", id : -1)
-            
-            articlesArray.append(tempArticle)
-            
-        } */
- 
+
         
         
         if (searchBar.text != nil) {
@@ -86,7 +74,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200;
+        return 250;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -187,14 +175,8 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
 
  
         
-        
-        
-   //     let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/searchnews", method: .post, parameters: parameters)
-        
-        
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getnewsforsectors", method: .post, parameters: parameters)
-        
-    //    let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getallnews", method: .get, parameters: nil)
+
         
         
         
@@ -218,7 +200,6 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let title = json[i]["post_title"].rawString()!
                         let postContent = json[i]["post_content"].rawString()!
                         let id = json[i]["id"].rawValue as! Int
-                    //    let sector = json[i]["sectors"][0].rawString()!
                     
                         let tempArticle = Article(title: title, content : postContent, id : id)
                         tempArticle.sector = "sector"

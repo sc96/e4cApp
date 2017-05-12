@@ -22,8 +22,7 @@ class Article: NSObject, NSCoding {
     var id : Int
     
     
-    
-    
+
     
     init(title : String, content : String, id : Int) {
         self.title = title

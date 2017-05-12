@@ -22,21 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        /*
-         
-         let homeViewController = HomeViewController(nibName:"HomeViewController", bundle: nil)
-         
-         let navigationController = UINavigationController(rootViewController: homeViewController)
-         
-         self.window = UIWindow(frame: UIScreen.main.bounds)
-         self.window?.rootViewController = navigationController
-         self.window?.makeKeyAndVisible() */
-        
+   
+        // E4C's colors
         UINavigationBar.appearance().tintColor  = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor.e4cLightBlue
         
     
-        
+        // retrieve currentUser from NSFileManager, if it exists.
+        // If it doesn't, then the user previously pressed logged out during his previous session
         let documents = manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileUrl = documents.appendingPathComponent("info.txt")
         
@@ -46,18 +39,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
+        
+        // Instantiate the  3 View Controllers for our tabs
         let homeViewController = HomeViewController()
         let webinarViewController = WebinarViewController()
         let newsViewController = NewsViewController()
         
         
+        // Instantiate 3 Nav controllers for for each View Controller
+        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+        let newsNavigationController = UINavigationController(rootViewController: newsViewController)
+        let webinarNavigationController = UINavigationController(rootViewController: webinarViewController)
+        
+        
+        
+        // Fourth ViewController depends on if you're logged in or not.
         var communityNavigationController : UINavigationController
         
+        
+        // Instantiate the CommunityViewController
         if UserController.sharedInstance.currentUser != nil {
             
             let communityViewController = CommunityViewController()
             communityNavigationController = UINavigationController(rootViewController: communityViewController)
         }
+            
+        // Instantiate the WelcomeViewController
         else {
             
             let welcomeViewController = WelcomeViewController()
@@ -65,21 +72,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         }
         
-        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-        let newsNavigationController = UINavigationController(rootViewController: newsViewController)
-        let webinarNavigationController = UINavigationController(rootViewController: webinarViewController)
 
-        
+
+        // Setting Colors
         homeNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         newsNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         webinarNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         communityNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
+        
+        // Creating TabBarItems, one for each NavController
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "Home-50.png"), selectedImage:UIImage(named: "Home-50.png") )
         let webinarTabBarItem = UITabBarItem(title: "Webinars", image:UIImage(named: "Webinar-50.png") , selectedImage: UIImage(named: "Webinar-50.png"))
         let newsTabBarItem = UITabBarItem(title: "News", image:UIImage(named: "News-50.png") , selectedImage: UIImage(named: "News-50.png"))
         let communityTabBarItem = UITabBarItem(title: "Community", image:UIImage(named: "Community-50.png") , selectedImage: UIImage(named: "Community-50.png"))
-        
         
         homeNavigationController.tabBarItem = homeTabBarItem
         newsNavigationController.tabBarItem = newsTabBarItem
@@ -87,11 +93,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         communityNavigationController.tabBarItem = communityTabBarItem
         
         
+        
+        // Finally setting the tabs for the tabViewController
         let controllers = [homeNavigationController, newsNavigationController, webinarNavigationController, communityNavigationController]
         tabViewController.viewControllers = controllers
         
         
-        
+        // Make the tabViewController the rootViewController of the application
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = tabViewController
         self.window?.makeKeyAndVisible()
@@ -99,10 +107,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         
-        
-        
         return true
     }
+    
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -13,7 +13,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
 
-    @IBOutlet weak var backgroundImageView: UIImageView!
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -36,8 +35,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var webView: UIWebView!
     
-    
-    @IBOutlet weak var scrollView: UIScrollView!
+
     
     
     
@@ -72,11 +70,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         eventTableView.dataSource = self;
         eventTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "eventCell")
         
-        backgroundImageView.image = UIImage(named: "backgroundImage")
-        
-
-        
-        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage")!)
+    
         
         // dummy data for now
         for i in 0...9 {
@@ -137,17 +131,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let newsPageViewController = NewsPageViewController(nibName: "NewsPageViewController", bundle: nil)
-        
-        newsPageViewController.articleTitle = articlesArray[indexPath.row].title
-    //    newsPageViewController.author = articlesArray[indexPath.row].author
-        newsPageViewController.sector = articlesArray[indexPath.row].sector
-   //     newsPageViewController.date = articlesArray[indexPath.row].date
-        newsPageViewController.imageUrl = articlesArray[indexPath.row].imageUrl
-        newsPageViewController.articleId = -1
-        newsPageViewController.content = "<p> hi </p>"
-        
-        self.navigationController?.pushViewController(newsPageViewController, animated: true)
+        let url = URL(string: "https://www.engineeringforchange.org/")
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
     
 

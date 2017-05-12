@@ -36,11 +36,9 @@ class ProfileViewController: UIViewController {
     
     
     @IBAction func personalPressed(_ sender: UIButton) {
-        
-     //   let editPersonalViewController = EditPersonalViewController(nibName: "EditPersonalViewController", bundle: nil)
+
         
         let editPersonalViewController = EditPersonalViewController()
-    //    self.navigationController?.present(editPersonalViewController, animated: false, completion: nil)
         self.navigationController?.pushViewController(editPersonalViewController, animated: true)
         
         

@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// Extending NSObject/NSCoding for persistence
 class User : NSObject, NSCoding {
     
     

@@ -15,37 +15,41 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
+    // data Array for Webinars
     var webinarsArray : [Webinar] = []
-    
-    var filters : [Bool] = [false, false, false, false, false, false, false, false, false]
     
     var refreshControl : UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // setup
         self.navigationItem.title = "Webinars"
+        self.automaticallyAdjustsScrollViewInsets = false
+        navigationController!.navigationBar.isTranslucent = true
         
+        // tableView setup
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "WebinarTableViewCell", bundle: nil), forCellReuseIdentifier: "webinarCell")
         
+        
+        // setting searchBar delegate
         searchBar.delegate = self
         
-        self.automaticallyAdjustsScrollViewInsets = false;
-        navigationController!.navigationBar.isTranslucent = true;
-        
+
+        // adding Filter Button to the navBar
         let filter_button : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Filter-50.png"),  style: .plain,  target: self, action: #selector(filterAction))
         navigationItem.rightBarButtonItem = filter_button
         
+        
+        // setting refreshControl
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Release to refresh")
         refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
         
-        
+        // Do an initial search to populate tableView
         if (searchBar.text != nil) {
             searchBarSearchButtonClicked(searchBar)
         }
@@ -60,9 +64,11 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
+    // refresh the data each time the View appears
     override func viewDidAppear(_ animated: Bool) {
         searchBarSearchButtonClicked(searchBar)
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -71,12 +77,15 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "webinarCell") as! WebinarTableViewCell
+
         
         let cell:WebinarTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "webinarCell") as! WebinarTableViewCell
         
+        // set cell's info
         cell.titleLabel.text = webinarsArray[indexPath.row].title
 
         
@@ -88,31 +97,35 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let webinarPageViewController = WebinarPageViewController(nibName: "WebinarPageViewController", bundle: nil)
         
+        // passing info to the next ViewController
         webinarPageViewController.videotitle = webinarsArray[indexPath.row].title
         webinarPageViewController.sector = webinarsArray[indexPath.row].sector
         webinarPageViewController.videoUrl = webinarsArray[indexPath.row].videoUrl
         webinarPageViewController.content = webinarsArray[indexPath.row].content
         webinarPageViewController.webinarId = webinarsArray[indexPath.row].id
         
+        // navigating to WebinarPageViewController
         self.navigationController?.pushViewController(webinarPageViewController, animated: true)
         
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200;
+        return 250;
     }
     
+    
+    // navigate to FiltersViewController
     func filterAction(sender:UIBarButtonItem){
         
-        print("fake filtered")
         
         let filtersViewController = FiltersViewController(nibName: "FiltersViewController", bundle: nil)
-        
         filtersViewController.type = "Webinars";
-        
         self.navigationController?.present(filtersViewController, animated: false, completion: nil)
+        
     }
+    
+    
     // call search function when the searchButtton is pressed
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
@@ -122,12 +135,13 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
         search(q: q!, onCompletion: {responseCode, message in
             
             
-            
+            // successful
             if message == nil {
                 
                 print(responseCode)
             }
-                
+               
+            // not successful
             else {
                 print(message!)
             }
@@ -141,74 +155,87 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         var parameters : [String :Any]
         
+        
+        // If we're logged in, use the currentUser's filters arrays
+        // If we're not, we use the tempFilter Array (the filters array for non-logged users)
         if (UserController.sharedInstance.currentUser != nil) {
             
             parameters = ["query" : q, "sectors" : UserController.sharedInstance.currentUser?.webinarFilters]
-            // parameters = ["sectors": [true, true, true, false, false, false, false, false, false]]
             
         }
             
         else {
             
             parameters = ["query" :q, "sectors" : UserController.sharedInstance.tempWebinarFilters]
-            // parameters = ["sectors": [true, true, true, false, false, false, false, false, false]]
+          
         }
         
         
-        
+        // creating request
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getwebinarsforsectors", method: .post, parameters: parameters)
         
      //   let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getallwebinars", method: .get, parameters: nil)
         
-        
+        // executing request
         WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
             
             print(responseCode)
             
+            
+            // successful
             if (responseCode == 200) {
                 
             
                 
-                // print(json)
+                // resetting webinarArrays before populating it
                 self.webinarsArray = []
                 let numResults = json.count
+                
                 if (numResults >= 1) {
                 
-                    
   
                     for i in 0...numResults-1 {
                     
+                        
+                        // creatin Webinar object
                         let title = json[i]["post_title"].rawString()!
                         let postContent = json[i]["post_content"].rawString()!
                         let id = json[i]["id"].rawValue as! Int
                     
                         let tempWebinar = Webinar(title: title, content : postContent, id : id)
+                        
+                        // these two are dummy data
                         tempWebinar.sector = "Sector \(i)"
                         tempWebinar.videoUrl = "www.google.com"
                     
-                    
+                        
+                        // append to webinarArrays
                         self.webinarsArray.append(tempWebinar)
                     
                     }
-                    
-                    self.tableView.reloadData()
 
                 }
                 
-                onCompletion(200,nil)
+                // refresh tableView
+                self.tableView.reloadData()
+                onCompletion(responseCode,nil)
                 
             }
+              
                 
+            // not successful
             else {
                 
                 
                 let message = "error"
-                onCompletion(100, message)
+                onCompletion(responseCode, message)
             }
             
         })
     }
     
+    
+    // refresh the tableView (do a new search) when the refreshControl is activated
     func refreshTable() {
         
         searchBarSearchButtonClicked(searchBar)

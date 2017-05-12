@@ -18,97 +18,93 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var segmentController: UISegmentedControl!
     
-    var projectsArray : [Project] = []
     
+    // Data Arrays for the tableViews
+    var projectsArray : [Project] = []
     var peopleArray : [User] = []
+    
+    
+    // refreshControl
+    var refreshControl : UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setup
         self.navigationItem.title = "Community"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-
-        
         self.navigationController?.navigationBar.barTintColor = UIColor.e4cLightBlue
         
+        
+        // setting searchBar Delegat
         searchBar.delegate = self
         
-        
+        // Adding Filter_Button to the NavBar
         let filter_button : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "User-50.png"),  style: .plain,  target: self, action: #selector(profileAction))
-        
         navigationItem.rightBarButtonItem = filter_button
-        
         addLeftBarButton()
         
+        
+        
+        // tableView setup
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "projectCell")
         tableView.register(UINib(nibName: "EngineersTableViewCell", bundle: nil), forCellReuseIdentifier: "engineerCell")
         
-        /*
-        // temp stuff
-        for i in 0...9 {
-            
-            let tempProject = Project(title: "title \(i)", projectDescript : "New project", id : "aa", nameAuthor : "bob", sector : "Energy", emailAuthor : "bleh")
-            
-            projectsArray.append(tempProject)
-            
-        }
+        
+        // Setting the refreshControl.
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Release to refresh")
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl)
         
         
-        for i in 0...30 {
+        // do the first search when the ViewController loads to popular the data array
+        search(q: "", onCompletion: {responseCode, error in
             
-            let tempPerson  = User(email: "bob@gmail.com", professionalStatus: 1, affiliation: 1, expertise: 1, country: 2, ageRange: 1, gender: 2, id: "tempId")
-            tempPerson.firstName = "Bob"
-            tempPerson.lastName = "Mason"
-            
-            peopleArray.append(tempPerson)
-            
-        } */
-        
-        
-        search(q: "", onCompletion: {resultsCount, error in
-            
-            
-            
+            // no error
             if error == nil {
-                
-            
+
                 
             }
                 
+                
+            // error
             else {
+                
+                print(responseCode)
+                
 
             }
         })
         
         
-        // segmentController.selectedSegmentIndex == 0 => Projects
-        // segmentController.selectedSegmentIndex == 1 => Engineers
-        
-
+    
     }
     
-    
+    // refresh the data each time the View appears
     override func viewDidAppear(_ animated: Bool) {
         
         let q = searchBar.text
         
-        search(q: q!, onCompletion: {resultsCount, error in
+        search(q: q!, onCompletion: {responseCode, error in
             
             
-            
+            // no error
             if error == nil {
                 
                 
                 
             }
-                
+              
+            // an error
             else {
-                
+                print(responseCode)
             }
         })
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -119,15 +115,18 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch (segmentController.selectedSegmentIndex) {
             
+            
+        // Projects
         case 0:
             return projectsArray.count
         break
         
+        // People
         case 1:
             return peopleArray.count
         break
@@ -144,11 +143,12 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         
         
         switch (segmentController.selectedSegmentIndex) {
-            
+        
+        // Projects
         case 0:
             return 150
             break
-            
+        // People
         case 1:
             return 50
             break
@@ -165,21 +165,22 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         
         
 
-        
+        // Projects
         if (segmentController.selectedSegmentIndex == 0) {
             
             let cell:ProjectTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "projectCell") as! ProjectTableViewCell
             
          
                 
-          
+            // setting Cell Info
             cell.titleLabel.text = projectsArray[indexPath.row].title
             cell.sectorLabel.text = projectsArray[indexPath.row].sector
             cell.textView.text = projectsArray[indexPath.row].projectDescript
         
-            // cell.titleLabel.text = "Project \([indexPath.row])"
             
-            // allow the textView to detect tap on its cell
+            
+            // tapAction to allow cell selection when pressing on the cell's textView
+            // Otherwise, pressing on the cell's textView (description) doesn't call didSelectRow
             let tap = UITapGestureRecognizer(target: self, action: #selector(selectAction))
             cell.textView.addGestureRecognizer(tap)
             cell.textView.tag = indexPath.row
@@ -187,10 +188,12 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
             return cell
         }
         
+            
+        // People
         else {
             let cell:EngineersTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "engineerCell") as! EngineersTableViewCell
             
-            
+            // setting cell's info
             cell.nameLabel.text = peopleArray[indexPath.row].firstName + peopleArray[indexPath.row].lastName
             cell.countryLabel.text = "Country : \(peopleArray[indexPath.row].country)"
             return cell
@@ -198,9 +201,6 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
             
         }
         
-        
-        
-      
         
     }
     
@@ -210,20 +210,28 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
  
         
         switch (segmentController.selectedSegmentIndex) {
-            
+           
+        // Projects
         case 0:
             let projectPageViewController = ProjectPageViewController(nibName: "ProjectPageViewController", bundle: nil)
             
+            
+            // passing info to the next ViewVontroller
             projectPageViewController.name = projectsArray[indexPath.row].nameAuthor
             projectPageViewController.sector = projectsArray[indexPath.row].sector
             projectPageViewController.projectDescript = projectsArray[indexPath.row].projectDescript
             projectPageViewController.projectTitle = projectsArray[indexPath.row].title
             projectPageViewController.email = projectsArray[indexPath.row].emailAuthor
+            
+            // Navigating to projectsPageViewController
             self.navigationController?.pushViewController(projectPageViewController, animated: true)
             break
-            
+        
+        // People
         case 1:
             let peopleViewController = PeopleViewController(nibName: "PeopleViewController", bundle: nil)
+            
+            // passing info to the next ViewController
             peopleViewController.about = peopleArray[indexPath.row].user_descript
             peopleViewController.name = peopleArray[indexPath.row].firstName
             peopleViewController.affiliation = peopleArray[indexPath.row].affiliation
@@ -231,6 +239,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
             peopleViewController.professional = peopleArray[indexPath.row].professionalStatus
             peopleViewController.email = peopleArray[indexPath.row].email
             
+            // Navigating to peopleViewController
             self.navigationController?.pushViewController(peopleViewController, animated: true)
             break
         default:
@@ -250,11 +259,8 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         search(q: q!, onCompletion: {responseCode, error in
             
             
-            
             if error == nil {
                 
-                
-                print(responseCode)
                 
             }
                 
@@ -272,33 +278,40 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         var parameters : [String :Any]
         
         
-        
+        // searching for projects
         if segmentController.selectedSegmentIndex == 0 {
             
+            
+            // creating parameter
             let parameters = ["query" : q]
             
+            
+            // creating request
             let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/searchprojects", method: .post, parameters: parameters)
         
-        
+            // executing request
             WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
             
                 print(responseCode)
             
+                // success
                 if (responseCode == 200) {
                 
                 
-                    print(json)
                     
                     let numResults = json.count
-                    // get 10 for now
+                    
+                    // reset ProjectArrays before populating it
                     self.projectsArray = []
                     
+                    // We got result back.
                     if numResults >= 1 {
                         
-                        let minNum = max(9, numResults-1)
                 
-                        for i in 0...minNum {
+                        // for each project
+                        for i in 0...numResults-1 {
                     
+                            
                             let title = json[i]["title"].rawString()!
                             let projectDescript = json[i]["description"].rawString()!
                             let id = json[i]["id"].rawString()!
@@ -306,59 +319,68 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
                             let authorName = json[i]["owner_name"].rawString()!
                             let authorEmail = json[i]["owner_email"].rawString()!
                     
+                            
+                            // create project object
                             let tempProject = Project(title : title, projectDescript : projectDescript, id : id, nameAuthor : authorName, sector: sector, emailAuthor : authorEmail)
                         
                         
-                    
+                            // add to the projects Array
                             self.projectsArray.append(tempProject)
-                            // self.articlesArray.append(tempArticle)
-                            self.tableView.reloadData()
                         }
                     
                     
                     }
-                    onCompletion(200,nil)
+                    
+                    // reload the tableView to show new data
+                    self.tableView.reloadData()
+                    onCompletion(responseCode,nil)
                 
                 
                 }
-                
+                // error
                 else {
                 
                 
                     let message = "error"
-                    onCompletion(100, message)
+                    onCompletion(responseCode, message)
                 }
             
             })
         }
         
+            
+        // searching for people
         else {
             
+            // creating parameter
             let parameters = ["query" : q]
             
+            
+            // creating request
             let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/searchusers", method: .post, parameters: parameters)
             
-            
+            // executing request
             WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
                 
                 print(responseCode)
                 
+                
+                // request was successful
                 if (responseCode == 200) {
                     
-                    
-                    print(json)
-                    
+
+                    // resetting peopleArray before populating it
                     self.peopleArray = []
-                    
                     
                     let numResults = json.count
                     
                     if numResults >= 1 {
                     
-                        let minNum = min(29, numResults-1)
+          
                     
-                        for i in 0...minNum {
+                        for i in 0...numResults-1 {
                         
+                            // create a tempPerson
                             let user_email = json[i]["user_email"].rawString()!
                             let user_country = json[i]["user_country"].rawValue as! Int
                             let user_description = json[i]["user_description"].rawString()!
@@ -366,30 +388,31 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
                             let user_profStatus = json[i]["user_profstatus"].rawValue as! Int
                             let user_name = json[i]["user_firstname"].rawString()! + json[i]["user_lastname"].rawString()!
                         
-                        
+                            // some details such as id and ageRange aren't shown to others
+                            // so we can set the to anything
                             let tempPerson = User(email: user_email, professionalStatus: user_profStatus, affiliation: user_affiliation, expertise: -1, country: user_country, ageRange: -1, gender: -1, id: "temp")
+                            
                             tempPerson.firstName = user_name
                         
-                        
+                            // add to peopleArrays
                             self.peopleArray.append(tempPerson)
-                        // self.articlesArray.append(tempArticle)
                             self.tableView.reloadData()
                         
                         
                         }
                         
-                        onCompletion(200,nil)
+                        onCompletion(responseCode,nil)
                     }
                     
                     
                     
                 }
                     
+                // not successful
                 else {
                     
-                    
                     let message = "error"
-                    onCompletion(100, message)
+                    onCompletion(responseCode, message)
                 }
                 
             })
@@ -398,16 +421,17 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
-    
-    
+    // navigate to ProfileViewController
     func profileAction(sender:UIBarButtonItem){
         
-        
+
         let profileViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         self.navigationController?.pushViewController(profileViewController, animated: false)
     }
     
     
+    
+    // navigate to AddProjectViewController
     func addAction(sender:UIBarButtonItem){
         
         
@@ -417,6 +441,8 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
 
+
+    // Only show the AddProject button when segmentController == 0 (searching/viewing Projects)
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         
         if (segmentController.selectedSegmentIndex == 1) {
@@ -429,20 +455,30 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.reloadData()
     }
     
-    
+
+    // calls didSelectRow when the cell's textView was pressed
     func selectAction(sender : UITapGestureRecognizer) {
-        
-        
+
         self.tableView(self.tableView, didSelectRowAt: IndexPath(row: sender.view!.tag, section: 0))
         
     }
     
-    
+ 
+    // add the AddProject button to the NavBar
     func addLeftBarButton() {
         
         let add_button : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Add-50.png"),  style: .plain,  target: self, action: #selector(addAction))
         navigationItem.leftBarButtonItem = add_button
         
+    }
+    
+    
+    
+    // refresh the tableView (do a new search) when the refreshControl is activated
+    func refreshTable() {
+        
+        searchBarSearchButtonClicked(searchBar)
+        refreshControl.endRefreshing()
     }
     /*
     // MARK: - Navigation

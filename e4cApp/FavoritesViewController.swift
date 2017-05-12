@@ -123,11 +123,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.titleLabel.text  = tempArticle.title
             }
    
-            
-            // allow the textView to detect tap on its cell
-      //      let tap = UITapGestureRecognizer(target: self, action: #selector(selectAction))
-      //      cell.textView.addGestureRecognizer(tap)
-      //      cell.textView.tag = indexPath.row
+
             
             return cell
         }

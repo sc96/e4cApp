@@ -18,10 +18,9 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // setup
         self.navigationItem.title = "Home"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-      //  UINavigationBar.appearance().barTintColor = UIColor.e4cLightBlue
         self.navigationController?.navigationBar.barTintColor = UIColor.e4cLightBlue
         
         
@@ -32,15 +31,16 @@ class WelcomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // navigate to LogInViewController
     @IBAction func signInAction(_ sender: UIButton) {
         
         
         let loginViewController = LogInViewController();
-        
         self.navigationController?.pushViewController(loginViewController, animated: false)
     }
     
-    
+    // navigate to SignUpViewController    
     @IBAction func signUpAction(_ sender: UIButton) {
         
         let signUpViewController = SignUpViewController();

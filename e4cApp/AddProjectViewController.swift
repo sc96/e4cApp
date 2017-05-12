@@ -18,20 +18,18 @@ class AddProjectViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBOutlet weak var titleView: UITextView!
 
-    
+    // pickerView's data array
     var sectors : [String] = ["Water", "Energy", "Health", "Housing", "Agriculture", "Sanitation", "ICT", "Transport"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
-        titleView.textColor = UIColor.lightGray
-        
+    
+        // setting delegate and datasource
         pickerView.delegate = self
         pickerView.dataSource = self
-        
         titleView.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,14 +46,13 @@ class AddProjectViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        
+        // 8 sectors
         return sectors.count
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-    
         return sectors[row]
     }
     
@@ -64,28 +61,9 @@ class AddProjectViewController: UIViewController, UIPickerViewDelegate, UIPicker
         return
     }
     
-    /*
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label: UILabel
-        
-        
-        if let view = view as? UILabel {
-            label = view
-        } else {
-            label = UILabel()
-        }
-        
-        label.textColor = .black
-        label.textAlignment = .center
-        label.font = UIFont(name: "SanFranciscoText-Light", size: 12)
-        
-        label.text = sectors[row]
-        
-        
-        
-        return label
-        
-    }*/
+
+    
+    // Placeholder text logic for the Title textView
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
@@ -105,10 +83,11 @@ class AddProjectViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     
-    
 
     @IBAction func submitPressed(_ sender: UIButton) {
         
+        
+        // Not all the forms were filled
         if (titleView.text == "" || textView.text == "" || titleView.text == "Title") {
         
         let alert =  UIAlertController (title: "Error" , message: "Please fill out all forms.", preferredStyle:  UIAlertControllerStyle.alert)
@@ -122,15 +101,18 @@ class AddProjectViewController: UIViewController, UIPickerViewDelegate, UIPicker
             
         }
         
+        // forms were all filled
         else {
             
+            
+            // Tries to addProject
             addProject(onCompletion: {resultsCount, error in
                 
                 
-                
+                // Success
                 if error == nil {
                     
-                    
+                    // Adding alert
                     let alert =  UIAlertController (title: "Success", message: "Project Submitted", preferredStyle:  UIAlertControllerStyle.alert)
                     
                     let alertAction1 = UIAlertAction( title: "Ok" , style: .cancel, handler: { action in
@@ -142,10 +124,10 @@ class AddProjectViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     
                     alert.addAction(alertAction1)
                     self.navigationController?.present(alert, animated: true, completion: nil)
- 
                     
                 }
-                    
+                
+                // Unsuccessful (Maybe also an alert?)
                 else {
                     print(error!)
                 }
@@ -159,10 +141,13 @@ class AddProjectViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     
+    // add Project
     func addProject(onCompletion: @escaping (Int?, String?) -> Void) {
         
         var parameters : [String :String]
         
+        
+        // Gets information for API Call
         let title = titleView.text!
         let owner_name = UserController.sharedInstance.currentUser!.firstName + UserController.sharedInstance.currentUser!.lastName
         let projectDescript = textView.text!
@@ -198,41 +183,34 @@ class AddProjectViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
         
         
+        // parameter for the API Call
         parameters = ["title" : title, "owner": owner, "description" : projectDescript, "sector" : sector, "owner_name" : owner_name, "owner_email" : owner_email]
         
     
         
-        
+        // creating a request
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/createproject", method: .post, parameters: parameters)
         
-        
+        // executing request
         WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
             
             print(responseCode)
             
+            // request was successful
             if (responseCode == 200) {
                 
                 
-                print(json)
-                
-                
-                // get 10 for now
-                
-                for i in 0...9 {
-                    
-                    print("a")
-                    
-                }
-                onCompletion(200,nil)
+                onCompletion(responseCode,nil)
                 
                 
             }
-                
+               
+            // request was not successful
             else {
                 
                 
-                let message = "error"
-                onCompletion(100, message)
+                let message = "Connection Error"
+                onCompletion(responseCode, message)
             }
             
         })

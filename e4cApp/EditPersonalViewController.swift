@@ -59,10 +59,6 @@ class EditPersonalViewController: UIViewController, UIPickerViewDelegate, UIPick
         affiliationPicker.delegate = self
         
         
-        
-        // countryPicker.dataSource = self
-        // countryPicker.delegate = self
-        
         professionalPicker.dataSource = self
         professionalPicker.delegate = self
         

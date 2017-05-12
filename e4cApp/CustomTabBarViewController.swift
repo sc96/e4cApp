@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTabBarViewController: UITabBarController {
+class CustomTabBarViewController: UITabBarController{
     
     
 
@@ -17,9 +17,11 @@ class CustomTabBarViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
         
+        // E4C's color
         self.tabBar.tintColor = UIColor.white
         self.tabBar.barTintColor = UIColor.e4cLightBlue
         self.tabBar.isTranslucent = true
+        
         
 
         
@@ -29,6 +31,8 @@ class CustomTabBarViewController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*

@@ -12,12 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="e4cApp" customModuleProvider="target">
             <connections>
                 <outlet property="aboutUsButton" destination="7OB-Xb-cx6" id="08d-ze-FYo"/>
-                <outlet property="backgroundImageView" destination="2NA-XJ-Q68" id="zrx-Ye-jtC"/>
                 <outlet property="collectionView" destination="ei6-4B-5CE" id="evg-n6-SoY"/>
                 <outlet property="eventTableView" destination="YGk-fv-yCj" id="59N-F7-zJr"/>
                 <outlet property="fbButton" destination="obA-gY-V3v" id="4Dm-1I-lAW"/>
                 <outlet property="logoImageView" destination="ydU-2U-beu" id="rFY-XN-yxi"/>
-                <outlet property="scrollView" destination="O3O-kt-eZ3" id="0Bp-NL-1nd"/>
                 <outlet property="sectorTableView" destination="hYA-mE-J5r" id="dY6-Mo-lts"/>
                 <outlet property="twitterButton" destination="UOc-UA-c34" id="gTf-IY-HSd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -36,9 +34,6 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wa0-kb-OnB">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="2500"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2NA-XJ-Q68">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="2500"/>
-                                </imageView>
                                 <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="e4c_rgb_sml.png" translatesAutoresizingMaskIntoConstraints="NO" id="ydU-2U-beu">
                                     <rect key="frame" x="53" y="19" width="210" height="103"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -157,10 +152,6 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="2NA-XJ-Q68" secondAttribute="bottom" id="9zZ-o6-3TE"/>
-                                <constraint firstAttribute="trailing" secondItem="2NA-XJ-Q68" secondAttribute="trailing" id="DXb-j3-cRJ"/>
-                                <constraint firstItem="2NA-XJ-Q68" firstAttribute="top" secondItem="wa0-kb-OnB" secondAttribute="top" id="GDA-4I-yB2"/>
-                                <constraint firstItem="2NA-XJ-Q68" firstAttribute="leading" secondItem="wa0-kb-OnB" secondAttribute="leading" id="hPC-sB-i6v"/>
                                 <constraint firstAttribute="height" constant="2500" id="vUX-vw-tjD" userLabel="height = 2200"/>
                             </constraints>
                         </view>

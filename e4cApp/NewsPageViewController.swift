@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsPageViewController: UIViewController, UIWebViewDelegate {
+class NewsPageViewController: UIViewController, UIWebViewDelegate, UITabBarDelegate, UITabBarControllerDelegate {
     
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -44,36 +44,62 @@ class NewsPageViewController: UIViewController, UIWebViewDelegate {
         titleLabel.text = articleTitle!
 
         
+        self.tabBarController?.delegate = self
+        
         currArticle = Article(title: articleTitle!, content: content!, id: articleId!)
+        
+        
+        let cssString = 
         
         webView.loadHTMLString(content!, baseURL: nil)
         
-        if (UserController.sharedInstance.currentUser != nil) {
-            
-          
-            
-            let numFav = (UserController.sharedInstance.currentUser!.favoritedArticles).count
-            
-            if numFav >= 1 {
-            
-                for i in 0...numFav-1 {
-                
-                    if UserController.sharedInstance.currentUser!.favoritedArticles[i] == articleId! {
-                        navigationItem.rightBarButtonItem?.image = UIImage(named: "Favorites_Filled-50")
-                        favorited = true
-                        break
-                    }
-                
-                }
-            }
-        }
+        checkForFavorites();
+        
+        
+        
         
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func checkForFavorites() {
+        
+        
+        if (UserController.sharedInstance.currentUser != nil) {
+            
+            
+            
+            let numFav = (UserController.sharedInstance.currentUser!.favoritedArticles).count
+            
+            if numFav >= 1 {
+                
+                for i in 0...numFav-1 {
+                    
+                    if UserController.sharedInstance.currentUser!.favoritedArticles[i] == articleId! {
+                        navigationItem.rightBarButtonItem?.image = UIImage(named: "Favorites_Filled-50")
+                        favorited = true
+                        break
+                    }
+                    
+                }
+            }
+        }
+        
+        
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        checkForFavorites()
+        print("does this work")
+    }
+    
+    
+   
     
     
     func addFavorite(onCompletion: @escaping (Int?, String?) -> Void) {
