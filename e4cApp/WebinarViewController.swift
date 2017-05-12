@@ -19,6 +19,8 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var webinarsArray : [Webinar] = []
     
     var filters : [Bool] = [false, false, false, false, false, false, false, false, false]
+    
+    var refreshControl : UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,17 +40,11 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
         let filter_button : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Filter-50.png"),  style: .plain,  target: self, action: #selector(filterAction))
         navigationItem.rightBarButtonItem = filter_button
         
-        /*
-        // dummy data for now
-        for i in 0...9 {
-            
-            
-            let tempWebinar = Webinar(title: "title \(i)", content: "", id: -1)
-            
-            webinarsArray.append(tempWebinar)
-            
-        }
-         */
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Release to refresh")
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl)
+        
         
         if (searchBar.text != nil) {
             searchBarSearchButtonClicked(searchBar)
@@ -61,6 +57,11 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        searchBarSearchButtonClicked(searchBar)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,6 +78,7 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell:WebinarTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "webinarCell") as! WebinarTableViewCell
         
         cell.titleLabel.text = webinarsArray[indexPath.row].title
+
         
         return cell
     }
@@ -94,10 +96,12 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.navigationController?.pushViewController(webinarPageViewController, animated: true)
         
-        
-        
     }
     
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200;
+    }
     
     func filterAction(sender:UIBarButtonItem){
         
@@ -139,22 +143,22 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if (UserController.sharedInstance.currentUser != nil) {
             
-            parameters = ["sectors" : UserController.sharedInstance.currentUser?.webinarFilters]
+            parameters = ["query" : q, "sectors" : UserController.sharedInstance.currentUser?.webinarFilters]
             // parameters = ["sectors": [true, true, true, false, false, false, false, false, false]]
             
         }
             
         else {
             
-            parameters = ["sectors" : UserController.sharedInstance.tempWebinarFilters]
+            parameters = ["query" :q, "sectors" : UserController.sharedInstance.tempWebinarFilters]
             // parameters = ["sectors": [true, true, true, false, false, false, false, false, false]]
         }
         
         
         
-   //     let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getwebinarsforsectors", method: .post, parameters: parameters)
+        let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getwebinarsforsectors", method: .post, parameters: parameters)
         
-        let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getallwebinars", method: .get, parameters: nil)
+     //   let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getallwebinars", method: .get, parameters: nil)
         
         
         WebService.executeRequest(urlRequest: request, requestCompletionFunction: {(responseCode, json) in
@@ -170,11 +174,9 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let numResults = json.count
                 if (numResults >= 1) {
                 
-                    let minNum = min(9, numResults-1)
-                
-                    // get 10 for now
-                
-                    for i in 0...minNum {
+                    
+  
+                    for i in 0...numResults-1 {
                     
                         let title = json[i]["post_title"].rawString()!
                         let postContent = json[i]["post_content"].rawString()!
@@ -186,9 +188,10 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                     
                         self.webinarsArray.append(tempWebinar)
-                        self.tableView.reloadData()
                     
                     }
+                    
+                    self.tableView.reloadData()
 
                 }
                 
@@ -204,6 +207,12 @@ class WebinarViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             
         })
+    }
+    
+    func refreshTable() {
+        
+        searchBarSearchButtonClicked(searchBar)
+        refreshControl.endRefreshing()
     }
     
 }

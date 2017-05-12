@@ -36,7 +36,7 @@ class Webinar: NSObject, NSCoding {
         title = (coder.decodeObject(forKey: "title") as? String) ?? ""
         sector = (coder.decodeObject(forKey: "sector") as? String) ?? ""
         videoUrl = (coder.decodeObject(forKey: "videoUrl") as? String) ?? ""
-        id = (coder.decodeObject(forKey: "id") as? Int) ?? -1
+        id = (coder.decodeObject(forKey: "id") as? Int) ?? 0
         content = (coder.decodeObject(forKey: "content") as? String) ?? ""
 
         

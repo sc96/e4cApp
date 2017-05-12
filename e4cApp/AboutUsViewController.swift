@@ -12,6 +12,12 @@ class AboutUsViewController: UIViewController {
 
     @IBOutlet weak var webView: UIWebView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+
+    
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +27,16 @@ class AboutUsViewController: UIViewController {
         webView.scrollView.isScrollEnabled = false
         webView.scrollView.bounces = false
         
-        webView.loadHTMLString("<iframe width=\"280\" height=\"180\" src=\"https://www.youtube.com/embed/SClOE9eCF3I?ecver=1\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
+        
+        backgroundImageView.image = UIImage(named: "backgroundImage")
+        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage")!)       
+        
+        
+        self.navigationItem.title = "Who We Are"
+        
+
+        
+        webView.loadHTMLString("<p style=\"text-align: center;\"><a target=\"_blank\" href=\"https://www.youtube.com/embed/SClOE9eCF3I?ecver=1\"><img src=\"https://www.engineeringforchange.org/wp-content/uploads/2015/07/ourmanifesto.jpg\" alt=\"ourmanifesto\" class=\"aligncenter size-full wp-image-10090\" srcset=\"https://www.engineeringforchange.org/wp-content/uploads/2015/07/ourmanifesto.jpg 993w, https://www.engineeringforchange.org/wp-content/uploads/2015/07/ourmanifesto-300x178.jpg 300w\" sizes=\"(max-width: 993px) 100vw, 993px\"></a></p>", baseURL: nil)
     }
 
     override func didReceiveMemoryWarning() {

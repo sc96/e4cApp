@@ -29,8 +29,6 @@ class NewsPageViewController: UIViewController, UIWebViewDelegate {
     var manager  = FileManager.default
     
     var currArticle : Article?
-    var start : DispatchTime?
-    var end : DispatchTime?
     
     
     override func viewDidLoad() {
@@ -55,7 +53,6 @@ class NewsPageViewController: UIViewController, UIWebViewDelegate {
           
             
             let numFav = (UserController.sharedInstance.currentUser!.favoritedArticles).count
-            print(numFav)
             
             if numFav >= 1 {
             
@@ -78,20 +75,10 @@ class NewsPageViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        self.start = DispatchTime.now()
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        self.end = DispatchTime.now()
-        print(self.end!.uptimeNanoseconds)
-        print(self.start!.uptimeNanoseconds)
-    }
-    
     
     func addFavorite(onCompletion: @escaping (Int?, String?) -> Void) {
         
-        let parameters = ["articleid" : articleId!, "userid" : UserController.sharedInstance.currentUser!.id] as [String : Any]
+        let parameters = ["id" : articleId!, "userid" : UserController.sharedInstance.currentUser!.id] as [String : Any]
         
         
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/favoritearticleforuser", method: .post, parameters: parameters)
@@ -136,7 +123,7 @@ class NewsPageViewController: UIViewController, UIWebViewDelegate {
     func removeFavorite(onCompletion: @escaping (Int?, String?) -> Void) {
         
         
-        let parameters = ["articleid" : articleId!, "userid" : UserController.sharedInstance.currentUser!.id] as [String : Any]
+        let parameters = ["id" : articleId!, "userid" : UserController.sharedInstance.currentUser!.id] as [String : Any]
         
         
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/unfavoritearticleforuser", method: .post, parameters: parameters)

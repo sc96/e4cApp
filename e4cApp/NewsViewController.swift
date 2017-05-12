@@ -24,6 +24,9 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     var filters : [Bool] = [false, false, false, false, false, false, false, false, false]
     
     var articlesArray : [Article] = []
+    
+    var refreshControl: UIRefreshControl!
+  
 
     
     override func viewDidLoad() {
@@ -39,6 +42,11 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "articleCell")
         searchBar.delegate = self
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Release to refresh")
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl)
         
         // dummy data for now
         
@@ -65,9 +73,12 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        searchBarSearchButtonClicked(searchBar)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         
         return articlesArray.count;
         
@@ -84,57 +95,13 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell:ArticleTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "articleCell") as! ArticleTableViewCell
         
         
-        // allow the textView to detect tap on its cell
-   //     let tap = UITapGestureRecognizer(target: self, action: #selector(selectAction))
-  //      cell.textView.addGestureRecognizer(tap)
-   //     cell.textView.tag = indexPath.row
-        
-  //      cell.titleLabel.text = "News title \(indexPath) "
         
         cell.titleLabel.text = articlesArray[indexPath.row].title
-        cell.sectorLabel.text = articlesArray[indexPath.row].sector
+
+    
+     
         
-        let sector : String
-        
-        /*
-        
-        switch articlesArray[indexPath.row].sector {
-            
-        
-        case 0 :
-            sector = "Water"
-            break
-        case 1 :
-            sector = "Energy"
-            break
-        case 2 :
-            sector = "Health"
-            break
-        case 3 :
-            sector = "Housing"
-            break
-        case 4 :
-            sector = "Agriculture"
-            break
-        case 5 :
-            sector = "Transportation"
-            break
-        case 6 :
-            sector = "ICT"
-            break
-        case 7 :
-            sector = "Transport"
-            break
-        default:
-            sector = "Water"
-            break
-        
-            
-            
-        }
-        cell.sectorLabel.text = sector
- */
-        
+
         
         return cell
     }
@@ -182,13 +149,13 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchBar.resignFirstResponder()
         let q = searchBar.text
         
-        search(q: q!, onCompletion: {articlesCount, error in
+        search(q: q!, onCompletion: {responseCode, error in
             
             
             
             if error == nil {
                 
-                print(articlesCount)
+                print(responseCode)
                 
             }
                 
@@ -205,19 +172,24 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var parameters : [String :Any]
         
+        
+        
         if (UserController.sharedInstance.currentUser != nil) {
             
-            parameters = ["sectors" : UserController.sharedInstance.currentUser?.articleFilters]
-            // parameters = ["sectors": [true, true, true, false, false, false, false, false, false]]
+            parameters = ["query" :q, "sectors" : UserController.sharedInstance.currentUser?.articleFilters]
             
         }
         
         else {
             
-            parameters = ["sectors" : UserController.sharedInstance.tempArticleFilters]
-            // parameters = ["sectors": [true, true, true, false, false, false, false, false, false]]
+            parameters = ["query" : q, "sectors" : UserController.sharedInstance.tempArticleFilters]
         }
+
+ 
         
+        
+        
+   //     let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/searchnews", method: .post, parameters: parameters)
         
         
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/getnewsforsectors", method: .post, parameters: parameters)
@@ -239,25 +211,25 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let numResults = json.count
                 if (numResults >= 1) {
                     
-                    let minNum = min(9, numResults-1)
-                
-                    // get 10 for now
+                    
   
-                
-                    for i in 0...minNum {
+                    for i in 0...numResults-1 {
                     
                         let title = json[i]["post_title"].rawString()!
                         let postContent = json[i]["post_content"].rawString()!
                         let id = json[i]["id"].rawValue as! Int
-                        let sector = json[i]["sectors"][0].rawString()!
+                    //    let sector = json[i]["sectors"][0].rawString()!
                     
                         let tempArticle = Article(title: title, content : postContent, id : id)
-                        tempArticle.sector = "Sector" + sector
+                        tempArticle.sector = "sector"
                         tempArticle.imageUrl = "www.google.com"
                     
                         self.articlesArray.append(tempArticle)
-                        self.tableView.reloadData()
+
                     }
+                    
+                  
+                    self.tableView.reloadData()
                 }
                 
                     
@@ -278,6 +250,15 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
         })
+    }
+    
+    
+    
+    
+    func refreshTable() {
+        
+        searchBarSearchButtonClicked(searchBar)
+        refreshControl.endRefreshing()
     }
 
 }

@@ -37,7 +37,7 @@ class Article: NSObject, NSCoding {
         sector = (coder.decodeObject(forKey: "sector") as? String) ?? ""
         imageUrl = (coder.decodeObject(forKey: "imageUrl") as? String) ?? ""
         content = (coder.decodeObject(forKey: "content") as? String) ?? ""
-        id = (coder.decodeObject(forKey: "content") as? Int) ?? 0
+        id = (coder.decodeObject(forKey: "id") as? Int) ?? 0
         
         
     }

@@ -13,6 +13,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -32,6 +33,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     @IBOutlet weak var fbButton: UIButton!
+    
+    @IBOutlet weak var webView: UIWebView!
+    
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     
     
     var eventImage : [String] = []
@@ -65,7 +72,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         eventTableView.dataSource = self;
         eventTableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "eventCell")
         
+        backgroundImageView.image = UIImage(named: "backgroundImage")
         
+
+        
+        scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "backgroundImage")!)
         
         // dummy data for now
         for i in 0...9 {
@@ -76,7 +87,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             articlesArray.append(tempArticle)
             
         }
+
+        webView.scrollView.isScrollEnabled = false
+        webView.scrollView.bounces = false
         
+        webView.loadHTMLString("<p style=\"text-align: center;\"><a target=\"_blank\" href=\"https://www.youtube.com/embed/SClOE9eCF3I?ecver=1\"><img src=\"https://www.engineeringforchange.org/wp-content/uploads/2015/07/ourmanifesto.jpg\" alt=\"ourmanifesto\" class=\"aligncenter size-full wp-image-10090\" srcset=\"https://www.engineeringforchange.org/wp-content/uploads/2015/07/ourmanifesto.jpg 993w, https://www.engineeringforchange.org/wp-content/uploads/2015/07/ourmanifesto-300x178.jpg 300w\" sizes=\"(max-width: 993px) 100vw, 993px\"></a></p>", baseURL: nil)
         
         
     }

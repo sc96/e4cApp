@@ -11,30 +11,100 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutUsViewController" customModule="e4cApp" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundImageView" destination="sEA-Wh-Oil" id="uYT-8Q-JcU"/>
+                <outlet property="scrollView" destination="9es-m5-Mvw" id="Bud-fa-vs1"/>
+                <outlet property="searchDisplayController" destination="8hs-Y8-OqH" id="bAN-3u-53o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="3ia-W5-eQr" id="7lH-zh-CTb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Our Manifesto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYC-IM-jjJ" userLabel="Our Manifesto">
-                    <rect key="frame" x="90" y="70" width="134" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <webView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ia-W5-eQr">
-                    <rect key="frame" x="20" y="126" width="280" height="180"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </webView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9es-m5-Mvw">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNl-Gs-gfR">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sEA-Wh-Oil">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7C-WE-TNM">
+                                    <rect key="frame" x="40" y="24" width="240" height="118"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <string key="text">E4C’s mission is to improve the lives of underserved communities by better preparing the global development workforce, optimizing the solutions development cycle, and ensuring public health and safety.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <webView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ia-W5-eQr">
+                                    <rect key="frame" x="20" y="144" width="280" height="180"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </webView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Founding Partners" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-Db-ksf">
+                                    <rect key="frame" x="82" y="356" width="156" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cib-q5-v9T">
+                                    <rect key="frame" x="40" y="592" width="240" height="224"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <mutableString key="text">
+Engineering for Change (E4C) works with partners who share our mission and passion for improving the quality of life. E4C strives to build a multidisciplinary coalition of change agents and invites your organization to join us in helping global development practitioners to design and deploy fit-for-service solutions that address quality of life challenges. Our partners help us develop knowledge, re-invent method design and multiply our growing network of practitioners. To become a partner, email us at partners@engineeringforchange.org</mutableString>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="foundingPartners.png" translatesAutoresizingMaskIntoConstraints="NO" id="anW-1D-ZhL">
+                                    <rect key="frame" x="40" y="443" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="sEA-Wh-Oil" secondAttribute="trailing" id="FgV-9x-eFt"/>
+                                <constraint firstAttribute="height" constant="1000" id="H5A-tp-Xlk"/>
+                                <constraint firstItem="sEA-Wh-Oil" firstAttribute="top" secondItem="VNl-Gs-gfR" secondAttribute="top" id="TSx-Xe-vms"/>
+                                <constraint firstItem="sEA-Wh-Oil" firstAttribute="leading" secondItem="VNl-Gs-gfR" secondAttribute="leading" id="dqX-If-VoW"/>
+                                <constraint firstAttribute="bottom" secondItem="sEA-Wh-Oil" secondAttribute="bottom" id="eXH-Rt-Z8e"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="VNl-Gs-gfR" secondAttribute="bottom" id="2Jg-Ku-6eW"/>
+                        <constraint firstItem="VNl-Gs-gfR" firstAttribute="top" secondItem="9es-m5-Mvw" secondAttribute="top" id="8yQ-gd-JpC"/>
+                        <constraint firstItem="VNl-Gs-gfR" firstAttribute="leading" secondItem="9es-m5-Mvw" secondAttribute="leading" id="GSQ-rC-hlo"/>
+                        <constraint firstAttribute="trailing" secondItem="VNl-Gs-gfR" secondAttribute="trailing" id="HIA-g8-xds"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9es-m5-Mvw" secondAttribute="bottom" id="CdX-wQ-DQS"/>
+                <constraint firstItem="VNl-Gs-gfR" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="MP9-ZD-r8s"/>
+                <constraint firstItem="9es-m5-Mvw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RyE-y8-Xxi"/>
+                <constraint firstItem="9es-m5-Mvw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aqP-lI-wj6"/>
+                <constraint firstAttribute="trailing" secondItem="9es-m5-Mvw" secondAttribute="trailing" id="hae-2J-Yqn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <searchDisplayController id="8hs-Y8-OqH">
+            <connections>
+                <outlet property="delegate" destination="-1" id="aWr-Kp-ma6"/>
+                <outlet property="searchContentsController" destination="-1" id="pFB-iU-inw"/>
+                <outlet property="searchResultsDataSource" destination="-1" id="o84-V6-YX2"/>
+                <outlet property="searchResultsDelegate" destination="-1" id="6Kf-xG-Mwa"/>
+            </connections>
+        </searchDisplayController>
     </objects>
+    <resources>
+        <image name="foundingPartners.png" width="445" height="305"/>
+    </resources>
 </document>

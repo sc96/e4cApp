@@ -35,7 +35,22 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.register(UINib(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "articleCell")
         tableView.register(UINib(nibName: "WebinarTableViewCell", bundle: nil), forCellReuseIdentifier: "webinarCell")
         
+        /*
+        UserController.sharedInstance.currentUser!.favoritedArticles = []
+        UserController.sharedInstance.currentUser!.favoritedWebinars = []
+        let documents = self.manager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileUrl = documents.appendingPathComponent("info.txt")
+        NSKeyedArchiver.archiveRootObject(UserController.sharedInstance.currentUser!, toFile: fileUrl.path)
+        print("ll")
+         
+ */
+
        
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,10 +118,9 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             if let tempArticle = NSKeyedUnarchiver.unarchiveObject(withFile: fileUrl.path) as? Article {
                 
+                tempArticle.id = articleID
                 articles.append(tempArticle)
                 cell.titleLabel.text  = tempArticle.title
-                cell.sectorLabel.text = tempArticle.sector
-                
             }
    
             
@@ -128,9 +142,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             
                 if let tempWebinar = NSKeyedUnarchiver.unarchiveObject(withFile: fileUrl.path) as? Webinar {
                 
+                tempWebinar.id = webinarID
                 webinars.append(tempWebinar)
                 cell.titleLabel.text  = tempWebinar.title
-                
+                print(tempWebinar.id)
                 
             }
                 return cell

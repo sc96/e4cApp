@@ -83,7 +83,7 @@ class WebinarPageViewController: UIViewController {
     
     func addFavorite(onCompletion: @escaping (Int?, String?) -> Void) {
         
-        let parameters = ["webinarid" : webinarId!, "userid" : UserController.sharedInstance.currentUser!.id] as [String : Any]
+        let parameters = ["id" : webinarId!, "userid" : UserController.sharedInstance.currentUser!.id] as [String : Any]
         
         
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/favoritewebinarforuser", method: .post, parameters: parameters)
@@ -129,7 +129,7 @@ class WebinarPageViewController: UIViewController {
     func removeFavorite(onCompletion: @escaping (Int?, String?) -> Void) {
         
         
-        let parameters = ["webinarid" : webinarId!, "userid" : UserController.sharedInstance.currentUser!.id] as [String : Any]
+        let parameters = ["id" : webinarId!, "userid" : UserController.sharedInstance.currentUser!.id] as [String : Any]
         
         
         let request = WebService.createMutableRequest(url: "https://e4ciosserver.herokuapp.com/api/unfavoritewebinarforuser", method: .post, parameters: parameters)
